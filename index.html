@@ -4,761 +4,688 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Para meu amor ❤️</title>
+<title>Para Meu Amor ❤️</title>
 
 <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html,
-body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#08050b;
-    font-family:Georgia, "Times New Roman", serif;
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050008;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
-/* =====================================================
-   EXPERIÊNCIA HORIZONTAL
-===================================================== */
+/* =========================
+   LOGIN
+========================= */
 
-.pages{
-    width:200vw;
-    height:100vh;
+#login {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
 
-    display:flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    overflow-x:auto;
-    overflow-y:hidden;
-
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-
-    -webkit-overflow-scrolling:touch;
-
-    scrollbar-width:none;
-}
-
-.pages::-webkit-scrollbar{
-    display:none;
-}
-
-.screen{
-    position:relative;
-
-    flex:0 0 100vw;
-
-    width:100vw;
-    height:100vh;
-
-    scroll-snap-align:start;
-    scroll-snap-stop:always;
-
-    overflow:hidden;
-}
-
-/* =====================================================
-   FUNDO DAS FOTOS
-===================================================== */
-
-.photo{
-    position:absolute;
-    inset:0;
-
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
-    opacity:0;
-
-    transform:scale(1.10);
-
-    filter:
-        grayscale(1)
-        blur(18px)
-        brightness(.28);
-
-    animation:
-        photoRise 4.5s cubic-bezier(.2,.7,.2,1) forwards;
-
-    will-change:opacity, transform, filter;
-}
-
-/* camada escura para deixar o texto legível */
-
-.photo::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
+    padding: 25px;
 
     background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.45),
-            rgba(0,0,0,.15) 45%,
-            rgba(0,0,0,.65)
-        );
+        radial-gradient(circle at center,
+        rgba(120, 0, 70, 0.35),
+        transparent 55%),
+        linear-gradient(135deg, #050008, #16000f, #050008);
+
+    color: white;
 }
 
-/* =====================================================
-   PRIMEIRA FOTO
-===================================================== */
+.login-box {
+    width: min(90vw, 380px);
 
-.photo-one{
-    background-image:url("1000197328.jpg");
-}
+    padding: 38px 28px;
 
-/* =====================================================
-   SEGUNDA FOTO
-===================================================== */
+    border-radius: 25px;
 
-.photo-two{
-    background-image:url("1000229690.jpg");
+    text-align: center;
 
-    animation-delay:.4s;
-}
+    background: rgba(20, 0, 15, 0.82);
 
-/* =====================================================
-   EFEITO "SURGINDO DAS CINZAS"
-===================================================== */
-
-.ashes{
-    position:absolute;
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:.85;
-
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.18) 0 1px, transparent 2px),
-        radial-gradient(circle at 70% 20%, rgba(255,255,255,.13) 0 1px, transparent 2px),
-        radial-gradient(circle at 40% 70%, rgba(255,255,255,.12) 0 1px, transparent 2px),
-        radial-gradient(circle at 80% 75%, rgba(255,255,255,.15) 0 1px, transparent 2px);
-
-    background-size:
-        90px 110px,
-        120px 130px,
-        150px 140px,
-        100px 120px;
-
-    animation:ashesFade 4.5s ease forwards;
-}
-
-@keyframes photoRise{
-
-    0%{
-        opacity:0;
-        transform:scale(1.10);
-        filter:
-            grayscale(1)
-            blur(18px)
-            brightness(.25);
-    }
-
-    35%{
-        opacity:.38;
-        filter:
-            grayscale(.8)
-            blur(11px)
-            brightness(.45);
-    }
-
-    70%{
-        opacity:.78;
-        filter:
-            grayscale(.25)
-            blur(4px)
-            brightness(.7);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-        filter:
-            grayscale(0)
-            blur(0)
-            brightness(.92);
-    }
-}
-
-@keyframes ashesFade{
-
-    0%{
-        opacity:.9;
-    }
-
-    55%{
-        opacity:.45;
-    }
-
-    100%{
-        opacity:0;
-    }
-}
-
-/* =====================================================
-   CONTEÚDO DA PRIMEIRA TELA
-===================================================== */
-
-.first-content{
-    position:relative;
-    z-index:5;
-
-    width:100%;
-    height:100%;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-}
-
-/* =====================================================
-   CORAÇÃO
-===================================================== */
-
-.heart-area{
-    position:relative;
-
-    width:min(82vw,430px);
-    aspect-ratio:1;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    animation:
-        heartFloat 4s ease-in-out infinite;
-
-    will-change:transform;
-}
-
-/* brilho externo */
-
-.heart-glow{
-    position:absolute;
-    inset:8%;
-
-    border-radius:50%;
-
-    background:radial-gradient(
-        circle,
-        rgba(255,70,145,.20),
-        rgba(145,40,255,.08) 40%,
-        transparent 70%
-    );
-
-    animation:glowPulse 3s ease-in-out infinite;
-
-    pointer-events:none;
-}
-
-/* SVG */
-
-.heart-svg{
-    width:100%;
-    height:100%;
-
-    overflow:visible;
-
-    filter:
-        drop-shadow(0 0 5px rgba(255,70,150,.85))
-        drop-shadow(0 0 13px rgba(190,50,255,.35));
-}
-
-/* preenchimento do coração */
-
-.heart-fill{
-    fill:url(#heartGradient);
-
-    opacity:0;
-
-    animation:heartFill 2s ease forwards;
-    animation-delay:2.6s;
-}
-
-/* desenho */
-
-.heart-line{
-    fill:none;
-
-    stroke:url(#heartStroke);
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-    stroke-linejoin:round;
-
-    stroke-dasharray:1;
-    stroke-dashoffset:1;
-
-    animation:drawHeart 3.5s cubic-bezier(.55,.05,.2,1) forwards;
-}
-
-.heart-line-soft{
-    fill:none;
-
-    stroke:rgba(255,190,225,.35);
-
-    stroke-width:1.2;
-
-    stroke-linecap:round;
-
-    stroke-dasharray:1;
-    stroke-dashoffset:1;
-
-    animation:drawHeart 3.5s cubic-bezier(.55,.05,.2,1) forwards;
-
-    animation-delay:.15s;
-}
-
-@keyframes drawHeart{
-
-    to{
-        stroke-dashoffset:0;
-    }
-}
-
-@keyframes heartFill{
-
-    to{
-        opacity:.18;
-    }
-}
-
-@keyframes heartFloat{
-
-    0%,100%{
-        transform:translateY(0) scale(1);
-    }
-
-    50%{
-        transform:translateY(-8px) scale(1.015);
-    }
-}
-
-@keyframes glowPulse{
-
-    0%,100%{
-        opacity:.65;
-        transform:scale(.95);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.05);
-    }
-}
-
-/* =====================================================
-   TEXTO DENTRO DO CORAÇÃO
-===================================================== */
-
-.inside-message{
-
-    position:absolute;
-
-    width:62%;
-
-    text-align:center;
-
-    color:white;
-
-    font-size:clamp(13px,3.2vw,19px);
-
-    line-height:1.35;
-
-    letter-spacing:1px;
-
-    text-shadow:
-        0 0 5px rgba(255,255,255,.9),
-        0 0 14px rgba(255,70,160,.8);
-
-    opacity:0;
-
-    animation:
-        messageAppear 1.5s ease forwards;
-
-    animation-delay:3.2s;
-}
-
-.inside-message span{
-    display:block;
-
-    margin-top:7px;
-
-    font-size:.75em;
-
-    opacity:.9;
-
-    animation:
-        arrowMove 1.4s ease-in-out infinite;
-}
-
-@keyframes messageAppear{
-
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes arrowMove{
-
-    0%,100%{
-        transform:translateX(0);
-    }
-
-    50%{
-        transform:translateX(7px);
-    }
-}
-
-/* =====================================================
-   INDICADOR DE DESLIZE
-===================================================== */
-
-.swipe-hint{
-
-    position:absolute;
-
-    bottom:34px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    z-index:10;
-
-    color:rgba(255,255,255,.8);
-
-    font-size:12px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    white-space:nowrap;
-
-    animation:hintPulse 2s ease-in-out infinite;
-}
-
-@keyframes hintPulse{
-
-    0%,100%{
-        opacity:.4;
-    }
-
-    50%{
-        opacity:1;
-    }
-}
-
-/* =====================================================
-   SEGUNDA TELA
-===================================================== */
-
-.second-screen{
-    overflow-y:auto;
-    overflow-x:hidden;
-
-    -webkit-overflow-scrolling:touch;
-
-    overscroll-behavior-x:none;
-
-    scrollbar-width:none;
-}
-
-.second-screen::-webkit-scrollbar{
-    display:none;
-}
-
-.second-content{
-
-    position:relative;
-    z-index:5;
-
-    min-height:100vh;
-
-    padding:
-        70px
-        22px
-        100px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-/* foto na segunda tela */
-
-.second-photo-frame{
-
-    width:min(90vw,650px);
-
-    aspect-ratio:4/3;
-
-    border-radius:24px;
-
-    overflow:hidden;
-
-    position:relative;
-
-    margin-bottom:55px;
+    border: 1px solid rgba(255, 80, 150, 0.35);
 
     box-shadow:
-        0 0 30px rgba(255,70,150,.25),
-        0 15px 60px rgba(0,0,0,.6);
+        0 0 40px rgba(255, 0, 120, 0.18),
+        inset 0 0 25px rgba(255, 0, 100, 0.04);
 
-    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(12px);
 }
 
-.second-photo-frame .photo{
-    animation-delay:.8s;
+.login-heart {
+    font-size: 55px;
+    margin-bottom: 12px;
+
+    animation: heartbeat 1.6s infinite;
 }
 
-/* =====================================================
-   DECLARAÇÃO
-===================================================== */
+.login-box h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
 
-.love-text{
+    color: #fff;
+}
 
-    width:min(92vw,1000px);
+.login-box p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
 
-    text-align:center;
+.login-box input {
+    width: 100%;
 
-    color:#fff;
+    padding: 15px 16px;
 
-    font-size:clamp(22px,4.4vw,48px);
+    margin-bottom: 12px;
 
-    line-height:1.5;
+    border: 1px solid rgba(255, 100, 170, 0.35);
+    border-radius: 13px;
 
-    letter-spacing:.2px;
+    outline: none;
+
+    background: rgba(255,255,255,0.06);
+
+    color: white;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+.login-box input::placeholder {
+    color: rgba(255,255,255,0.45);
+}
+
+.login-box button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: linear-gradient(90deg, #ff2f8b, #ff5ca8);
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255, 40, 130, 0.25);
+}
+
+.login-box button:active {
+    transform: scale(0.97);
+}
+
+#error {
+    display: none;
+
+    margin-top: 15px;
+
+    color: #ff719f;
+
+    font-size: 14px;
+}
+
+/* =========================
+   SITE
+========================= */
+
+#site {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+/* =========================
+   ÁREA HORIZONTAL
+========================= */
+
+.pages {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-x: contain;
+
+    touch-action: pan-x;
+
+    scrollbar-width: none;
+}
+
+.pages::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================
+   CADA TELA
+========================= */
+
+.page {
+    flex: 0 0 100vw;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    overflow: hidden;
+}
+
+/* =========================
+   PRIMEIRA TELA
+========================= */
+
+.page-one {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(130, 0, 70, 0.22),
+        transparent 50%),
+        linear-gradient(145deg,
+        #030005,
+        #13000d,
+        #030005);
+}
+
+/* lugar reservado para a foto */
+
+.photo-placeholder {
+    position: absolute;
+
+    width: min(78vw, 430px);
+    height: min(78vw, 430px);
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 35px;
+
+    color: rgba(255,255,255,0.28);
+
+    border: 1px dashed rgba(255, 80, 160, 0.18);
+
+    background:
+        radial-gradient(circle,
+        rgba(255, 40, 130, 0.08),
+        transparent 65%);
+
+    font-size: 14px;
+
+    pointer-events: none;
+}
+
+/* =========================
+   CORAÇÃO
+========================= */
+
+.heart-container {
+    position: relative;
+
+    width: min(82vw, 450px);
+    height: min(82vw, 450px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+
+    animation: heartFloat 4s ease-in-out infinite;
+}
+
+.heart-svg {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+}
+
+.heart-path {
+    fill: none;
+
+    stroke: url(#heartGradient);
+
+    stroke-width: 3.5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    filter:
+        drop-shadow(0 0 5px rgba(255,30,130,0.8))
+        drop-shadow(0 0 15px rgba(255,30,130,0.5));
+
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+
+    animation:
+        drawHeart 3.5s ease forwards,
+        heartGlow 2s ease-in-out infinite alternate 3.5s;
+}
+
+.heart-text {
+    position: relative;
+
+    z-index: 10;
+
+    width: 65%;
+
+    text-align: center;
+
+    color: white;
+
+    font-size: clamp(18px, 5vw, 28px);
+
+    line-height: 1.35;
+
+    font-weight: bold;
 
     text-shadow:
-        0 0 5px rgba(255,255,255,.5),
-        0 0 20px rgba(255,60,150,.25);
+        0 0 8px rgba(255,70,160,0.8),
+        0 0 20px rgba(255,30,130,0.5);
 
-    opacity:0;
-
-    animation:textAppear 2s ease forwards;
-
-    animation-delay:4s;
+    animation:
+        textAppear 2s ease 2.5s both;
 }
 
-.love-text .title{
+.heart-text span {
+    display: inline-block;
 
-    display:block;
+    margin-left: 7px;
 
-    margin-bottom:35px;
+    font-size: 1.3em;
 
-    font-size:clamp(32px,7vw,72px);
+    animation: arrowMove 1.3s ease-in-out infinite;
+}
 
-    color:#fff;
+/* =========================
+   INDICAÇÃO DE DESLIZE
+========================= */
 
-    font-weight:bold;
+.swipe-hint {
+    position: absolute;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    animation: hintPulse 2s infinite;
+}
+
+.swipe-arrow {
+    display: inline-block;
+
+    margin-left: 5px;
+
+    font-size: 20px;
+
+    animation: arrowMove 1.2s infinite;
+}
+
+/* =========================
+   SEGUNDA TELA
+========================= */
+
+.page-two {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-y;
+
+    background:
+        radial-gradient(circle at top,
+        rgba(100,0,60,0.25),
+        transparent 45%),
+        linear-gradient(160deg,
+        #080008,
+        #17000f,
+        #050006);
+
+    color: white;
+}
+
+/* área da segunda foto */
+
+.photo-two-placeholder {
+    width: calc(100% - 30px);
+
+    max-width: 700px;
+
+    height: 48vh;
+
+    min-height: 280px;
+
+    margin: 25px auto 30px;
+
+    border-radius: 25px;
+
+    border: 1px dashed rgba(255, 80, 160, 0.18);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: rgba(255,255,255,0.28);
+
+    background:
+        radial-gradient(circle,
+        rgba(255, 40, 130, 0.08),
+        transparent 65%);
+
+    position: relative;
+}
+
+/* =========================
+   TEXTO
+========================= */
+
+.love-content {
+    width: min(90%, 720px);
+
+    margin: 0 auto;
+
+    padding-bottom: 80px;
+}
+
+.love-title {
+    text-align: center;
+
+    font-size: clamp(28px, 8vw, 48px);
+
+    margin-bottom: 35px;
+
+    color: #fff;
 
     text-shadow:
-        0 0 8px rgba(255,255,255,.8),
-        0 0 25px rgba(255,70,160,.8);
-
+        0 0 10px rgba(255,60,150,0.8),
+        0 0 30px rgba(255,20,120,0.4);
 }
 
-.love-text p{
+.love-text {
+    font-size: clamp(17px, 4.5vw, 21px);
 
-    margin-bottom:32px;
+    line-height: 1.85;
+
+    text-align: left;
+
+    color: rgba(255,255,255,0.92);
 }
 
-.love-text strong{
+.love-text p {
+    margin-bottom: 28px;
+}
 
-    color:#ffb3d9;
+.final-love {
+    text-align: center;
+
+    font-size: clamp(24px, 6vw, 36px);
+
+    line-height: 1.5;
+
+    margin-top: 40px;
+
+    color: #fff;
 
     text-shadow:
-        0 0 8px rgba(255,80,170,.8);
+        0 0 10px rgba(255,60,150,0.9),
+        0 0 25px rgba(255,30,130,0.5);
 }
 
-.final-love{
+/* =========================
+   CORAÇÕES FLUTUANTES
+========================= */
 
-    margin-top:35px;
+.floating-heart {
+    position: fixed;
 
-    font-size:clamp(32px,6vw,65px);
+    bottom: -30px;
 
-    font-weight:bold;
+    z-index: 3;
 
-    color:#ffb6d9;
+    color: rgba(255,60,150,0.35);
 
-    text-shadow:
-        0 0 8px rgba(255,255,255,.8),
-        0 0 25px rgba(255,40,140,.9),
-        0 0 50px rgba(255,40,140,.5);
+    pointer-events: none;
+
+    animation: floatHeart linear infinite;
 }
 
-@keyframes textAppear{
-
-    from{
-        opacity:0;
-        transform:translateY(35px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.floating-heart:nth-child(1) {
+    left: 10%;
+    font-size: 18px;
+    animation-duration: 8s;
 }
 
-/* =====================================================
-   PEQUENOS CORAÇÕES
-===================================================== */
-
-.floating-hearts{
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-
-    z-index:3;
+.floating-heart:nth-child(2) {
+    left: 25%;
+    font-size: 12px;
+    animation-duration: 11s;
+    animation-delay: 2s;
 }
 
-.floating-hearts span{
-
-    position:absolute;
-
-    bottom:-30px;
-
-    color:rgba(255,160,205,.65);
-
-    font-size:14px;
-
-    animation:floatHeart linear infinite;
-
-    opacity:0;
+.floating-heart:nth-child(3) {
+    left: 48%;
+    font-size: 22px;
+    animation-duration: 9s;
+    animation-delay: 4s;
 }
 
-.floating-hearts span:nth-child(1){
-    left:10%;
-    animation-duration:8s;
+.floating-heart:nth-child(4) {
+    left: 72%;
+    font-size: 15px;
+    animation-duration: 12s;
+    animation-delay: 1s;
 }
 
-.floating-hearts span:nth-child(2){
-    left:25%;
-    animation-duration:11s;
-    animation-delay:2s;
+.floating-heart:nth-child(5) {
+    left: 88%;
+    font-size: 20px;
+    animation-duration: 10s;
+    animation-delay: 3s;
 }
 
-.floating-hearts span:nth-child(3){
-    left:48%;
-    animation-duration:9s;
-    animation-delay:1s;
-}
+/* =========================
+   ANIMAÇÕES
+========================= */
 
-.floating-hearts span:nth-child(4){
-    left:70%;
-    animation-duration:12s;
-    animation-delay:3s;
-}
-
-.floating-hearts span:nth-child(5){
-    left:88%;
-    animation-duration:10s;
-    animation-delay:1.5s;
-}
-
-@keyframes floatHeart{
-
-    0%{
-        transform:translateY(0) scale(.7);
-        opacity:0;
-    }
-
-    15%{
-        opacity:.7;
-    }
-
-    80%{
-        opacity:.5;
-    }
-
-    100%{
-        transform:translateY(-110vh) scale(1.3) rotate(20deg);
-        opacity:0;
+@keyframes drawHeart {
+    to {
+        stroke-dashoffset: 0;
     }
 }
 
-/* =====================================================
-   AJUSTES PARA CELULAR
-===================================================== */
-
-@media(max-width:600px){
-
-    .heart-area{
-        width:88vw;
-        max-width:390px;
+@keyframes heartGlow {
+    from {
+        filter:
+            drop-shadow(0 0 5px rgba(255,30,130,0.7))
+            drop-shadow(0 0 12px rgba(255,30,130,0.4));
     }
 
-    .inside-message{
-        width:60%;
-        font-size:14px;
-    }
-
-    .swipe-hint{
-        bottom:25px;
-        font-size:10px;
-    }
-
-    .second-content{
-        padding-top:45px;
-    }
-
-    .second-photo-frame{
-        width:92vw;
-        margin-bottom:40px;
-        border-radius:18px;
-    }
-
-    .love-text{
-        font-size:23px;
-        line-height:1.55;
-    }
-
-    .love-text .title{
-        font-size:38px;
-    }
-
-    .final-love{
-        font-size:38px;
+    to {
+        filter:
+            drop-shadow(0 0 10px rgba(255,80,180,1))
+            drop-shadow(0 0 30px rgba(255,20,140,0.7));
     }
 }
 
-/* =====================================================
+@keyframes textAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes arrowMove {
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(9px);
+    }
+}
+
+@keyframes hintPulse {
+    0%,100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.12);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+@keyframes floatHeart {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.6;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CELULARES PEQUENOS
+========================= */
+
+@media (max-width: 380px) {
+
+    .heart-container {
+        width: 86vw;
+        height: 86vw;
+    }
+
+    .heart-text {
+        font-size: 17px;
+    }
+
+    .swipe-hint {
+        bottom: 20px;
+    }
+
+}
+
+/* =========================
    REDUÇÃO DE MOVIMENTO
-   ===================================================== */
+========================= */
 
-@media(prefers-reduced-motion:reduce){
+@media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        scroll-behavior:auto !important;
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
     }
 
 }
@@ -768,36 +695,77 @@ body{
 
 <body>
 
-<div class="pages">
+<!-- =========================
+     LOGIN
+========================= -->
 
-    <!-- =================================================
-         TELA 1
-    ================================================== -->
+<div id="login">
 
-    <section class="screen">
+    <div class="login-box">
 
-        <div class="photo photo-one"></div>
-
-        <div class="ashes"></div>
-
-        <div class="floating-hearts">
-            <span>♥</span>
-            <span>♡</span>
-            <span>♥</span>
-            <span>♡</span>
-            <span>♥</span>
+        <div class="login-heart">
+            ❤️
         </div>
 
-        <div class="first-content">
+        <h1>Uma surpresa para você</h1>
 
-            <div class="heart-area">
+        <p>
+            Digite seu nome e a senha para entrar.
+        </p>
 
-                <div class="heart-glow"></div>
+        <input
+            type="text"
+            id="username"
+            placeholder="Seu nome"
+            autocomplete="off"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Senha"
+            autocomplete="off"
+        >
+
+        <button onclick="entrar()">
+            Entrar ❤️
+        </button>
+
+        <div id="error">
+            Nome ou senha incorretos 💔
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SITE
+========================= -->
+
+<div id="site">
+
+    <div class="pages" id="pages">
+
+        <!-- =========================
+             PRIMEIRA TELA
+        ========================= -->
+
+        <section class="page page-one">
+
+            <div class="photo-placeholder">
+                ❤️<br><br>
+                Aqui ficará a foto das alianças.
+            </div>
+
+            <div class="heart-container">
 
                 <svg
                     class="heart-svg"
-                    viewBox="0 0 200 190"
-                    xmlns="http://www.w3.org/2000/svg">
+                    viewBox="0 0 100 100"
+                    aria-hidden="true"
+                >
 
                     <defs>
 
@@ -806,296 +774,291 @@ body{
                             x1="0%"
                             y1="0%"
                             x2="100%"
-                            y2="100%">
+                            y2="100%"
+                        >
 
                             <stop
                                 offset="0%"
-                                stop-color="#ff5caa"/>
+                                stop-color="#ff3b9d"
+                            />
 
                             <stop
                                 offset="50%"
-                                stop-color="#ff9acb"/>
+                                stop-color="#ff78bd"
+                            />
 
                             <stop
                                 offset="100%"
-                                stop-color="#a95cff"/>
-
-                        </linearGradient>
-
-                        <linearGradient
-                            id="heartStroke"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="100%">
-
-                            <stop
-                                offset="0%"
-                                stop-color="#ff4d9d"/>
-
-                            <stop
-                                offset="50%"
-                                stop-color="#ffd0e8"/>
-
-                            <stop
-                                offset="100%"
-                                stop-color="#b66cff"/>
+                                stop-color="#ff174f"
+                            />
 
                         </linearGradient>
 
                     </defs>
 
-                    <!-- preenchimento -->
-
                     <path
-                        class="heart-fill"
+                        class="heart-path"
                         pathLength="1"
                         d="
-                        M100 175
-                        C85 158 28 125 20 80
-                        C12 37 43 15 70 22
-                        C85 26 95 38 100 50
-                        C105 38 115 26 130 22
-                        C157 15 188 37 180 80
-                        C172 125 115 158 100 175
-                        Z
-                        "
-                    />
-
-                    <!-- coração principal -->
-
-                    <path
-                        class="heart-line"
-                        pathLength="1"
-                        d="
-                        M100 175
-                        C85 158 28 125 20 80
-                        C12 37 43 15 70 22
-                        C85 26 95 38 100 50
-                        C105 38 115 26 130 22
-                        C157 15 188 37 180 80
-                        C172 125 115 158 100 175
-                        Z
-                        "
-                    />
-
-                    <!-- brilho interno -->
-
-                    <path
-                        class="heart-line-soft"
-                        pathLength="1"
-                        d="
-                        M100 166
-                        C83 150 37 119 29 80
-                        C22 47 46 27 68 31
-                        C84 34 94 48 100 61
-                        C106 48 116 34 132 31
-                        C154 27 178 47 171 80
-                        C163 119 117 150 100 166
+                        M50 88
+                        C45 82 15 64 10 43
+                        C5 21 20 10 35 13
+                        C44 15 49 21 50 27
+                        C51 21 56 15 65 13
+                        C80 10 95 21 90 43
+                        C85 64 55 82 50 88
                         Z
                         "
                     />
 
                 </svg>
 
-                <div class="inside-message">
 
-                    role para o lado,
-                    meu amor
-
+                <div class="heart-text">
+                    role para o lado, meu amor
                     <span>→</span>
-
                 </div>
 
             </div>
 
-        </div>
 
-        <div class="swipe-hint">
-            deslize para a direita ❤️
-        </div>
+            <div class="swipe-hint">
+                Deslize para a direita
+                <span class="swipe-arrow">→</span>
+            </div>
 
-    </section>
+        </section>
 
 
-    <!-- =================================================
-         TELA 2
-    ================================================== -->
+        <!-- =========================
+             SEGUNDA TELA
+        ========================= -->
 
-    <section class="screen second-screen">
+        <section class="page page-two">
 
-        <div class="photo photo-two"></div>
-
-        <div class="ashes"></div>
-
-        <div class="second-content">
-
-            <div class="second-photo-frame">
-
-                <div class="photo photo-two"></div>
-
+            <div class="photo-two-placeholder">
+                ❤️<br><br>
+                Aqui ficará a nossa foto no barco.
             </div>
 
 
-            <article class="love-text">
+            <div class="love-content">
 
-                <div class="title">
+                <div class="love-title">
                     Para Jheneffer ❤️
                 </div>
 
 
-                <p>
-                    Às vezes eu paro para pensar em como tive sorte
-                    de encontrar você e, sinceramente, parece até
-                    difícil colocar em palavras tudo o que você
-                    significa para mim.
-                </p>
+                <div class="love-text">
 
+                    <p>
+                        Às vezes eu paro para pensar em como tive sorte de encontrar você e, sinceramente, parece até difícil colocar em palavras tudo o que você significa para mim.
+                    </p>
 
-                <p>
-                    Você me apresentou o maior amor que alguém
-                    poderia conhecer. Um amor que mudou a forma
-                    como eu enxergo a vida, os dias e até o futuro.
-                    Depois que você entrou na minha vida, tudo ficou
-                    diferente. Os dias ficaram mais bonitos, os
-                    momentos ganharam mais significado e a vida,
-                    de alguma forma, ficou melhor simplesmente
-                    porque você está nela.
-                </p>
+                    <p>
+                        Você me apresentou o maior amor que alguém poderia conhecer. Um amor que mudou a forma como eu enxergo a vida, os dias e até o futuro. Depois que você entrou na minha vida, tudo ficou diferente. Os dias ficaram mais bonitos, os momentos ganharam mais significado e a vida, de alguma forma, ficou melhor simplesmente porque você está nela.
+                    </p>
 
+                    <p>
+                        Eu sei que não sou perfeito. Eu já errei com você, já tive atitudes que poderia ter feito diferente e sei que, em alguns momentos, talvez tenha te machucado. Mas também sei que, em meio aos meus erros, eu tentei acertar, tentei aprender e, acima de tudo, tentei cuidar do amor que existe entre nós. Porque você é importante demais para mim para que eu simplesmente não me importe.
+                    </p>
 
-                <p>
-                    Eu sei que não sou perfeito. Eu já errei com você,
-                    já tive atitudes que poderia ter feito diferente e
-                    sei que, em alguns momentos, talvez tenha te
-                    machucado. Mas também sei que, em meio aos meus
-                    erros, eu tentei acertar, tentei aprender e, acima
-                    de tudo, tentei cuidar do amor que existe entre nós.
-                    Porque você é importante demais para mim para que
-                    eu simplesmente não me importe.
-                </p>
+                    <p>
+                        Eu nunca tiro você da minha cabeça. Você está nos meus pensamentos quando acordo, durante o meu dia, nas coisas que vejo, nas músicas que escuto e até nos pequenos momentos em que, do nada, me pego sorrindo porque lembrei de você.
+                    </p>
 
+                    <p>
+                        Eu amo você de uma forma que nunca amei ninguém. E não digo isso apenas pela intensidade do que sinto, mas porque com você eu descobri um tipo de amor que eu nem sabia que poderia existir para mim.
+                    </p>
 
-                <p>
-                    Eu nunca tiro você da minha cabeça. Você está nos
-                    meus pensamentos quando acordo, durante o meu dia,
-                    nas coisas que vejo, nas músicas que escuto e até
-                    nos pequenos momentos em que, do nada, me pego
-                    sorrindo porque lembrei de você.
-                </p>
+                    <p>
+                        Tenho uma sorte imensa por ter você na minha vida, Jheneffer. Sorte por poder te amar, por poder compartilhar momentos com você, por conhecer seu jeito, suas manias, seus detalhes e por poder construir uma história ao seu lado.
+                    </p>
 
+                    <p>
+                        E se eu pudesse escolher novamente, entre todas as pessoas, todos os caminhos e todas as possibilidades, eu ainda escolheria você.
+                    </p>
 
-                <p>
-                    Eu amo você de uma forma que nunca amei ninguém.
-                    E não digo isso apenas pela intensidade do que sinto,
-                    mas porque com você eu descobri um tipo de amor que
-                    eu nem sabia que poderia existir para mim.
-                </p>
+                    <p>
+                        Porque é com você que eu quero viver os dias bons, enfrentar os dias difíceis, aprender com os nossos erros, comemorar os nossos acertos e continuar construindo algo que seja nosso.
+                    </p>
 
+                    <p>
+                        Você não é apenas alguém que eu amo.
+                    </p>
 
-                <p>
-                    Tenho uma sorte imensa por ter você na minha vida,
-                    Jheneffer. Sorte por poder te amar, por poder
-                    compartilhar momentos com você, por conhecer seu
-                    jeito, suas manias, seus detalhes e por poder
-                    construir uma história ao seu lado.
-                </p>
+                    <p>
+                        Você é alguém que mudou a minha vida.
+                    </p>
 
+                    <p>
+                        E talvez essa seja a forma mais bonita de explicar o que você significa para mim: a minha vida é diferente porque você existe nela, e é muito melhor porque é ao seu lado que eu quero vivê-la💗.
+                    </p>
 
-                <p>
-                    E se eu pudesse escolher novamente, entre todas as
-                    pessoas, todos os caminhos e todas as possibilidades,
-                    eu ainda escolheria você.
-                </p>
-
-
-                <p>
-                    Porque é com você que eu quero viver os dias bons,
-                    enfrentar os dias difíceis, aprender com os nossos
-                    erros, comemorar os nossos acertos e continuar
-                    construindo algo que seja nosso.
-                </p>
-
-
-                <p>
-                    Você não é apenas alguém que eu amo.
-                </p>
-
-
-                <p>
-                    Você é alguém que mudou a minha vida.
-                </p>
-
-
-                <p>
-                    E talvez essa seja a forma mais bonita de explicar
-                    o que você significa para mim:
-                    <strong>
-                        a minha vida é diferente porque você existe nela,
-                        e é muito melhor porque é ao seu lado que eu quero
-                        vivê-la 💗.
-                    </strong>
-                </p>
+                </div>
 
 
                 <div class="final-love">
 
                     Eu te amo, Jheneffer. ❤️
 
+                    <br><br>
+
+                    Mais do que eu consigo explicar em palavras.
+
+                    <br>
+
+                    Mais do que eu já amei alguém.
+
+                    <br><br>
+
+                    E espero poder continuar te mostrando,
+                    todos os dias,
+                    o tamanho desse amor. ❤️
+
                 </div>
 
+            </div>
 
-                <p>
-                    Mais do que eu consigo explicar em palavras.
-                    Mais do que eu já amei alguém.
-                    E espero poder continuar te mostrando, todos os dias,
-                    o tamanho desse amor.
-                </p>
+        </section>
 
-            </article>
+    </div>
 
-        </div>
 
-    </section>
+    <!-- CORAÇÕES FLUTUANTES -->
+
+    <div class="floating-heart">♥</div>
+    <div class="floating-heart">♥</div>
+    <div class="floating-heart">♥</div>
+    <div class="floating-heart">♥</div>
+    <div class="floating-heart">♥</div>
 
 </div>
 
+
+<script>
+
+/* =========================
+   LOGIN
+========================= */
+
+function entrar() {
+
+    const usuario =
+        document.getElementById("username").value.trim();
+
+    const senha =
+        document.getElementById("password").value;
+
+    const erro =
+        document.getElementById("error");
+
+    if (
+        usuario === "Jheneffer" &&
+        senha === "teamo"
+    ) {
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("site").style.display = "block";
+
+    } else {
+
+        erro.style.display = "block";
+
+    }
+
+}
+
+
+/* =========================
+   ENTER NO LOGIN
+========================= */
+
+document
+    .getElementById("password")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            entrar();
+        }
+
+    });
+
+
+/* =========================
+   GARANTIR DESLIZE PARA A DIREITA
+========================= */
+
+const pages =
+    document.getElementById("pages");
+
+let startX = 0;
+let startY = 0;
+
+pages.addEventListener(
+    "touchstart",
+    function(event) {
+
+        const touch = event.touches[0];
+
+        startX = touch.clientX;
+        startY = touch.clientY;
+
+    },
+    { passive: true }
+);
+
+
+pages.addEventListener(
+    "touchend",
+    function(event) {
+
+        const touch = event.changedTouches[0];
+
+        const endX = touch.clientX;
+        const endY = touch.clientY;
+
+        const differenceX = endX - startX;
+        const differenceY = endY - startY;
+
+        /* 
+           Só considera gesto horizontal
+           quando o movimento para os lados
+           for maior que o movimento vertical.
+        */
+
+        if (
+            Math.abs(differenceX) > 50 &&
+            Math.abs(differenceX) > Math.abs(differenceY)
+        ) {
+
+            if (differenceX < 0) {
+
+                pages.scrollTo({
+                    left: window.innerWidth,
+                    behavior: "smooth"
+                });
+
+            } else {
+
+                pages.scrollTo({
+                    left: 0,
+                    behavior: "smooth"
+                });
+
+            }
+
+        }
+
+    },
+    { passive: true }
+);
+
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
