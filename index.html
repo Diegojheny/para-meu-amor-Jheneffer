@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Uma surpresa para você ❤️</title>
+    <title>Para meu amor ❤️</title>
 
     <style>
         * {
@@ -15,26 +14,31 @@
             margin: 0;
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #ffe6ef, #fff5f8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: #7a1642;
+            background: linear-gradient(135deg, #ffe4ee, #fff7fa);
+            color: #861642;
+            overflow-x: hidden;
         }
 
         /* =========================
-           TELA DE LOGIN
+           LOGIN
            ========================= */
 
         .login-screen {
-            width: 90%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .login-box {
+            width: 100%;
             max-width: 420px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px 30px;
             border-radius: 25px;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(150, 30, 75, 0.15);
+            box-shadow: 0 15px 50px rgba(120, 20, 60, 0.18);
         }
 
         .login-heart {
@@ -42,37 +46,37 @@
             margin-bottom: 10px;
         }
 
-        .login-screen h1 {
+        .login-box h1 {
             margin: 0;
             font-size: 32px;
         }
 
-        .login-screen p {
-            color: #9a6177;
-            margin-bottom: 25px;
+        .login-box p {
+            color: #9b6378;
+            margin: 12px 0 25px;
         }
 
-        .login-screen label {
+        .login-box label {
             display: block;
             text-align: left;
             font-weight: bold;
             margin: 15px 0 7px;
         }
 
-        .login-screen input {
+        .login-box input {
             width: 100%;
             padding: 15px;
-            border: 2px solid #f0bfd0;
+            border: 2px solid #efbfd0;
             border-radius: 12px;
             font-size: 16px;
             outline: none;
         }
 
-        .login-screen input:focus {
+        .login-box input:focus {
             border-color: #ff4f87;
         }
 
-        .login-screen button {
+        .login-box button {
             width: 100%;
             padding: 15px;
             margin-top: 25px;
@@ -85,84 +89,90 @@
             cursor: pointer;
         }
 
-        .login-screen button:hover {
-            background: #e93d73;
+        .login-box button:active {
+            transform: scale(0.98);
         }
 
         #erro {
-            color: #c62857;
-            min-height: 20px;
+            min-height: 22px;
             margin-top: 12px;
+            color: #c62857;
             font-weight: bold;
         }
 
         /* =========================
-           TELA PRINCIPAL
+           TELA DO AMOR
            ========================= */
 
         .love-screen {
             display: none;
-            width: 100%;
             min-height: 100vh;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
             position: relative;
             overflow: hidden;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px;
             background:
-                radial-gradient(circle,
-                #fff7fa 0%,
-                #ffeaf1 45%,
-                #ffd8e5 100%);
+                radial-gradient(
+                    circle at center,
+                    #fff9fb 0%,
+                    #ffeaf1 50%,
+                    #ffd5e3 100%
+                );
         }
 
         .love-screen.active {
             display: flex;
         }
 
+        /* =========================
+           CORAÇÃO
+           ========================= */
+
         .heart-container {
-            width: 350px;
-            height: 350px;
+            width: 330px;
+            height: 330px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        /* Coração */
-
         .heart {
-            width: 190px;
-            height: 190px;
+            width: 175px;
+            height: 175px;
             position: absolute;
             transform: rotate(-45deg);
             border-left: 8px solid #ff4f87;
             border-bottom: 8px solid #ff4f87;
             animation: pulsar 1.2s infinite;
-            filter: drop-shadow(0 5px 15px rgba(255, 79, 135, 0.35));
+            filter: drop-shadow(
+                0 5px 15px rgba(255, 79, 135, 0.35)
+            );
         }
 
         .heart::before,
         .heart::after {
             content: "";
             position: absolute;
-            width: 190px;
-            height: 190px;
+            width: 175px;
+            height: 175px;
             border: 8px solid #ff4f87;
             border-radius: 50%;
         }
 
         .heart::before {
-            top: -100px;
+            top: -92px;
             left: -8px;
             border-bottom: none;
         }
 
         .heart::after {
             top: 0;
-            left: 100px;
+            left: 92px;
             border-left: none;
         }
 
@@ -196,26 +206,30 @@
         .heart-text {
             position: relative;
             z-index: 2;
-            font-size: 38px;
+            font-size: 35px;
             font-weight: 900;
-            color: #8f1747;
             line-height: 1.1;
+            color: #8f1747;
         }
 
+        /* =========================
+           FRASES
+           ========================= */
+
         .love-message {
-            font-size: clamp(30px, 6vw, 55px);
             max-width: 900px;
-            padding: 0 25px;
             margin: 0;
+            padding: 0 20px;
+            font-size: clamp(30px, 6vw, 55px);
             font-weight: 900;
             line-height: 1.1;
             color: #8f1747;
         }
 
         .small-message {
-            font-size: 20px;
-            color: #a15370;
             margin-top: 20px;
+            font-size: 19px;
+            color: #a15370;
         }
 
         /* =========================
@@ -224,11 +238,12 @@
 
         .floating-heart {
             position: absolute;
-            bottom: -50px;
+            bottom: -60px;
+            font-size: 28px;
             color: #ff6f9d;
-            font-size: 25px;
-            animation: subir 6s linear infinite;
             opacity: 0;
+            animation: subir 7s linear infinite;
+            pointer-events: none;
         }
 
         .heart1 {
@@ -237,18 +252,18 @@
         }
 
         .heart2 {
-            left: 25%;
+            left: 30%;
             animation-delay: 2s;
         }
 
         .heart3 {
-            left: 70%;
+            left: 65%;
             animation-delay: 1s;
         }
 
         .heart4 {
             left: 85%;
-            animation-delay: 3s;
+            animation-delay: 3.5s;
         }
 
         @keyframes subir {
@@ -263,14 +278,24 @@
             }
 
             100% {
-                transform: translateY(-100vh) scale(1.3);
+                transform: translateY(-110vh) scale(1.4);
                 opacity: 0;
             }
         }
 
-        /* Celular */
+        /* =========================
+           CELULAR
+           ========================= */
 
         @media (max-width: 600px) {
+
+            .login-box {
+                padding: 35px 25px;
+            }
+
+            .login-box h1 {
+                font-size: 28px;
+            }
 
             .heart-container {
                 width: 290px;
@@ -278,20 +303,201 @@
             }
 
             .heart {
-                width: 150px;
-                height: 150px;
+                width: 145px;
+                height: 145px;
             }
 
             .heart::before,
             .heart::after {
-                width: 150px;
-                height: 150px;
+                width: 145px;
+                height: 145px;
             }
 
             .heart::before {
-                top: -80px;
+                top: -77px;
             }
 
             .heart::after {
-                left: 80px;
-```
+                left: 77px;
+            }
+
+            .heart-text {
+                font-size: 29px;
+            }
+
+            .love-message {
+                font-size: 34px;
+            }
+
+            .small-message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         TELA DE LOGIN
+         ========================= -->
+
+    <section class="login-screen" id="loginScreen">
+
+        <div class="login-box">
+
+            <div class="login-heart">
+                ❤️
+            </div>
+
+            <h1>
+                Uma surpresa para você
+            </h1>
+
+            <p>
+                Digite seu usuário e senha para entrar 💕
+            </p>
+
+            <form id="loginForm">
+
+                <label for="usuario">
+                    Usuário
+                </label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="Digite seu usuário"
+                    required
+                >
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+                <button type="submit">
+                    Entrar ❤️
+                </button>
+
+                <div id="erro"></div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TELA DE AMOR
+         ========================= -->
+
+    <section class="love-screen" id="loveScreen">
+
+        <div class="floating-heart heart1">
+            ♥
+        </div>
+
+        <div class="floating-heart heart2">
+            ♡
+        </div>
+
+        <div class="floating-heart heart3">
+            ♥
+        </div>
+
+        <div class="floating-heart heart4">
+            ♡
+        </div>
+
+
+        <div class="heart-container">
+
+            <div class="heart"></div>
+
+            <div class="heart-text">
+                EU AMO<br>
+                VOCÊ ❤️
+            </div>
+
+        </div>
+
+
+        <p class="love-message">
+            Você me faz feliz todos os dias.
+        </p>
+
+        <p class="small-message">
+            E eu escolheria você de novo, todos os dias. 💕
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const loginScreen =
+            document.getElementById("loginScreen");
+
+        const loveScreen =
+            document.getElementById("loveScreen");
+
+        const erro =
+            document.getElementById("erro");
+
+
+        loginForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const usuario =
+                document.getElementById("usuario").value;
+
+            const senha =
+                document.getElementById("senha").value;
+
+
+            const usuarioCorreto =
+                "Jheneffer";
+
+            const senhaCorreta =
+                "Energisa@2021";
+
+
+            if (
+                usuario === usuarioCorreto &&
+                senha === senhaCorreta
+            ) {
+
+                loginScreen.style.display = "none";
+
+                loveScreen.classList.add("active");
+
+            } else {
+
+                erro.textContent =
+                    "Usuário ou senha incorretos ❤️";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
