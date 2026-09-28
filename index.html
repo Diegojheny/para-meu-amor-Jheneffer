@@ -8,19 +8,29 @@
 
 <style>
 
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html,
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
-    background: #120009;
+    width: 100%;
+    height: 100%;
 }
 
-/* ==============================
+body {
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ================================
    LOGIN
 ================================ */
 
@@ -33,57 +43,67 @@ body {
     justify-content: center;
     align-items: center;
 
-    background:
-        radial-gradient(circle at center, #4d0b29, #16000c 70%);
-
     padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #5e1038 0%,
+            #260717 38%,
+            #0b0207 100%
+        );
+
+    color: white;
 }
 
 .loginBox {
 
     width: 100%;
-    max-width: 420px;
+    max-width: 410px;
 
-    padding: 40px 30px;
+    padding: 42px 30px;
 
     text-align: center;
 
     border-radius: 30px;
 
-    background: rgba(255,255,255,0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.035)
+        );
 
-    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.18);
 
-    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(18px);
 
     box-shadow:
-        0 0 40px rgba(255,40,120,0.25),
-        inset 0 0 30px rgba(255,255,255,0.03);
-
-    color: white;
+        0 0 40px rgba(255,40,120,.22),
+        inset 0 0 30px rgba(255,255,255,.035);
 }
 
 .loginHeart {
 
     font-size: 70px;
 
-    animation:
-        loginPulse 1.3s infinite;
-
     margin-bottom: 15px;
 
+    animation: loginBeat 1.4s infinite;
+
     filter:
-        drop-shadow(0 0 20px #ff4d8d);
+        drop-shadow(0 0 10px #ff3f86)
+        drop-shadow(0 0 30px #ff3f86);
 }
 
-@keyframes loginPulse {
+@keyframes loginBeat {
 
-    0%,100% {
+    0%, 100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.15);
+        transform: scale(1.16);
     }
 }
 
@@ -96,8 +116,9 @@ body {
 
 .loginBox p {
 
-    color: #ffc1d8;
-    margin-bottom: 30px;
+    color: #ffc1d9;
+
+    margin-bottom: 28px;
 
 }
 
@@ -109,7 +130,7 @@ body {
 
     margin: 15px 0 7px;
 
-    color: #ffd5e4;
+    color: #ffd9e6;
 
     font-weight: bold;
 
@@ -121,11 +142,11 @@ body {
 
     padding: 15px;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,.2);
 
-    background: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,.25);
 
     color: white;
 
@@ -137,10 +158,10 @@ body {
 
 .loginBox input:focus {
 
-    border-color: #ff4f91;
+    border-color: #ff4c92;
 
     box-shadow:
-        0 0 15px rgba(255,79,145,0.35);
+        0 0 18px rgba(255,76,146,.35);
 
 }
 
@@ -148,16 +169,13 @@ body {
 
     width: 100%;
 
-    margin-top: 25px;
-
     padding: 16px;
+
+    margin-top: 24px;
 
     border: none;
 
     border-radius: 15px;
-
-    background:
-        linear-gradient(135deg,#ff3f82,#ff75a7);
 
     color: white;
 
@@ -167,32 +185,58 @@ body {
 
     cursor: pointer;
 
+    background:
+        linear-gradient(
+            135deg,
+            #ff397e,
+            #ff69a1,
+            #d93cff
+        );
+
+    background-size: 200% 200%;
+
+    animation: buttonGradient 4s ease infinite;
+
     box-shadow:
-        0 8px 25px rgba(255,50,120,0.35);
+        0 8px 30px rgba(255,45,120,.35);
 
-    transition: 0.25s;
-
+    transition: .25s;
 }
 
-.loginBox button:hover {
+@keyframes buttonGradient {
 
-    transform: translateY(-2px) scale(1.02);
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.loginBox button:active {
+
+    transform: scale(.97);
 
 }
 
 #erro {
 
+    min-height: 20px;
+
     margin-top: 12px;
 
-    color: #ff9bbb;
-
-    min-height: 20px;
+    color: #ff9abb;
 
 }
 
 
-/* ==============================
-   TELA PRINCIPAL
+/* ================================
+   TELA DO AMOR
 ================================ */
 
 #loveScreen {
@@ -206,66 +250,78 @@ body {
 
     overflow: hidden;
 
-    color: white;
-
     background:
 
         radial-gradient(
-            circle at 50% 45%,
-            #5b1235 0%,
-            #290619 35%,
-            #100007 75%
+            circle at 50% 43%,
+            #68153d 0%,
+            #35091f 28%,
+            #18030e 62%,
+            #070105 100%
         );
 
+    color: white;
 }
 
 
-/* brilho central */
+/* ================================
+   BRILHO CENTRAL
+================================ */
 
-.glow {
+.centerGlow {
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
 
     left: 50%;
     top: 45%;
 
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,60,130,0.18),
+            rgba(255,30,120,.25) 0%,
+            rgba(190,30,130,.12) 30%,
             transparent 70%
         );
 
     filter: blur(20px);
 
-    animation: glowPulse 2.5s infinite;
+    animation: centerGlow 3s ease-in-out infinite;
 
 }
 
-@keyframes glowPulse {
+@keyframes centerGlow {
 
     0%,100% {
-        transform: translate(-50%,-50%) scale(0.9);
-        opacity: .6;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.85);
+
+        opacity: .55;
+
     }
 
     50% {
-        transform: translate(-50%,-50%) scale(1.2);
-        opacity: 1;
-    }
 
+        transform:
+            translate(-50%, -50%)
+            scale(1.15);
+
+        opacity: 1;
+
+    }
 }
 
 
-/* ==============================
-   CORAÇÃO
+/* ================================
+   ÁREA DO CORAÇÃO
 ================================ */
 
 .heartArea {
@@ -275,97 +331,158 @@ body {
     left: 50%;
     top: 43%;
 
-    transform: translate(-50%,-50%);
+    width: min(90vw, 470px);
+    height: min(90vw, 470px);
 
-    width: 350px;
-    height: 350px;
+    transform: translate(-50%, -50%);
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
     cursor: pointer;
 
-    z-index: 5;
+    z-index: 10;
+
+    animation: floatingHeart 5s ease-in-out infinite;
+
+}
+
+@keyframes floatingHeart {
+
+    0%,100% {
+
+        transform:
+            translate(-50%, -50%)
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            translateY(-12px);
+
+    }
+}
+
+
+/* ================================
+   SVG
+================================ */
+
+.heartSvg {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
 
 }
 
 
-/* coração externo */
+/* ================================
+   DEGRADÊ DO CORAÇÃO
+================================ */
 
-.heart {
-
-    position: relative;
-
-    width: 180px;
-    height: 180px;
-
-    transform: rotate(-45deg);
-
-    border-left: 7px solid #ff4d91;
-    border-bottom: 7px solid #ff4d91;
+#heartGradient {
 
     animation:
+        gradientMove 4s linear infinite;
 
-        heartBeat 1.8s infinite,
+}
 
-        heartFloat 4s ease-in-out infinite;
+@keyframes gradientMove {
+
+    0% {
+        stop-color: #ff2f7d;
+    }
+
+    35% {
+        stop-color: #ff6ca8;
+    }
+
+    65% {
+        stop-color: #d948ff;
+    }
+
+    100% {
+        stop-color: #ff2f7d;
+    }
+
+}
+
+
+/* ================================
+   FILTRO DE BRILHO
+================================ */
+
+.neonGlow {
 
     filter:
+        url(#glow)
+        drop-shadow(0 0 10px #ff3f8b)
+        drop-shadow(0 0 25px #ff3f8b)
+        drop-shadow(0 0 50px rgba(255,50,140,.9));
 
-        drop-shadow(0 0 8px #ff4d91)
-        drop-shadow(0 0 25px rgba(255,50,130,.7));
+}
 
-    transition: .25s;
+
+/* ================================
+   CONTORNO PRINCIPAL
+================================ */
+
+.heartOutline {
+
+    fill: none;
+
+    stroke: url(#heartGradient);
+
+    stroke-width: 10;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 1500;
+
+    stroke-dashoffset: 1500;
+
+    animation:
+        drawHeart 3.2s cubic-bezier(.65,0,.25,1) forwards,
+        heartPulse 2.1s 3.2s ease-in-out infinite;
 
 }
 
 
-/* círculos do coração */
+/* coração sendo desenhado */
 
-.heart::before,
-.heart::after {
+@keyframes drawHeart {
 
-    content: "";
+    0% {
 
-    position: absolute;
+        stroke-dashoffset: 1500;
 
-    width: 180px;
-    height: 180px;
+    }
 
-    border: 7px solid #ff4d91;
+    100% {
 
-    border-radius: 50%;
+        stroke-dashoffset: 0;
 
-}
-
-.heart::before {
-
-    top: -94px;
-    left: -7px;
-
-    border-bottom: none;
-
-}
-
-.heart::after {
-
-    top: 0;
-    left: 94px;
-
-    border-left: none;
+    }
 
 }
 
 
 /* pulsação */
 
-@keyframes heartBeat {
+@keyframes heartPulse {
 
     0%,100% {
 
         transform:
-            rotate(-45deg)
+            translate(0,0)
             scale(1);
 
     }
@@ -373,31 +490,31 @@ body {
     8% {
 
         transform:
-            rotate(-45deg)
-            scale(1.12);
+            translate(0,0)
+            scale(1.035);
 
     }
 
-    16% {
+    17% {
 
         transform:
-            rotate(-45deg)
+            translate(0,0)
             scale(1);
 
     }
 
-    24% {
+    25% {
 
         transform:
-            rotate(-45deg)
-            scale(1.08);
+            translate(0,0)
+            scale(1.022);
 
     }
 
-    34% {
+    35% {
 
         transform:
-            rotate(-45deg)
+            translate(0,0)
             scale(1);
 
     }
@@ -405,72 +522,159 @@ body {
 }
 
 
-/* balanço */
+/* ================================
+   PREENCHIMENTO APARECENDO
+================================ */
 
-@keyframes heartFloat {
+.heartFill {
 
-    0%,100% {
+    fill: url(#fillGradient);
 
-        margin-top: 0;
+    opacity: 0;
+
+    transform-origin: center;
+
+    animation:
+        fillHeart 2s 2.4s ease forwards;
+
+}
+
+@keyframes fillHeart {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(.82);
 
     }
 
-    50% {
+    100% {
 
-        margin-top: -12px;
+        opacity: .12;
+
+        transform: scale(1);
 
     }
 
 }
 
 
-/* interação */
+/* ================================
+   SEGUNDO CONTORNO
+================================ */
 
-.heartArea:hover .heart {
+.heartInner {
 
-    filter:
+    fill: none;
 
-        drop-shadow(0 0 15px #ff4d91)
-        drop-shadow(0 0 50px #ff4d91);
+    stroke: rgba(255,170,215,.65);
 
-    transform:
-        rotate(-45deg)
-        scale(1.12);
+    stroke-width: 2;
+
+    stroke-dasharray: 8 12;
+
+    opacity: 0;
+
+    animation:
+        innerAppear 2s 2.7s ease forwards,
+        innerRotate 12s 2.7s linear infinite;
+
+}
+
+@keyframes innerAppear {
+
+    to {
+        opacity: .75;
+    }
+
+}
+
+@keyframes innerRotate {
+
+    to {
+        stroke-dashoffset: -100;
+    }
 
 }
 
 
-/* ==============================
-   TEXTO DENTRO
+/* ================================
+   TEXTO
 ================================ */
 
 .insideText {
 
     position: absolute;
 
-    z-index: 10;
+    z-index: 20;
 
     text-align: center;
 
-    color: #fff;
+    pointer-events: none;
 
-    font-size: 28px;
+    opacity: 0;
+
+    animation:
+        textAppear 2s 2.9s ease forwards;
+
+}
+
+.insideText .small {
+
+    display: block;
+
+    font-size: 20px;
+
+    letter-spacing: 5px;
+
+    color: #ffd7e8;
+
+    margin-bottom: 6px;
+
+}
+
+.insideText .big {
+
+    display: block;
+
+    font-size: clamp(30px, 8vw, 50px);
 
     font-weight: 900;
 
-    line-height: 1.1;
+    line-height: .95;
+
+    color: white;
 
     text-shadow:
+        0 0 8px #ff4f91,
+        0 0 20px #ff4f91,
+        0 0 40px rgba(255,60,140,.8);
 
-        0 0 10px #ff4d91,
-        0 0 25px rgba(255,70,140,.8);
+}
 
-    pointer-events: none;
+@keyframes textAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.7);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
 
 }
 
 
-/* ==============================
+/* ================================
    MENSAGEM
 ================================ */
 
@@ -478,40 +682,65 @@ body {
 
     position: absolute;
 
-    top: 75%;
-
     width: 100%;
 
-    text-align: center;
+    left: 0;
+
+    top: 75%;
 
     padding: 0 20px;
 
-    z-index: 5;
+    text-align: center;
 
-    animation: messageAppear 2s ease forwards;
+    z-index: 15;
+
+    opacity: 0;
+
+    animation:
+        messageAppear 2s 3.5s ease forwards;
 
 }
 
 .message h1 {
 
-    font-size: clamp(30px,6vw,60px);
+    font-size:
+        clamp(32px, 7vw, 62px);
 
-    color: white;
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffb5d2,
+            #ffffff,
+            #e9aaff
+        );
+
+    background-size: 250% auto;
+
+    color: transparent;
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    animation:
+        textGradient 5s linear infinite;
 
     text-shadow:
-
-        0 0 10px #ff4d91,
-        0 0 30px rgba(255,70,140,.6);
+        0 0 25px rgba(255,80,160,.25);
 
 }
 
 .message p {
 
-    margin-top: 15px;
-
-    font-size: 20px;
+    margin-top: 14px;
 
     color: #ffc7da;
+
+    font-size:
+        clamp(16px, 4vw, 21px);
 
 }
 
@@ -520,52 +749,111 @@ body {
     from {
 
         opacity: 0;
-        transform: translateY(30px);
+
+        transform:
+            translateY(35px);
 
     }
 
     to {
 
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+@keyframes textGradient {
+
+    to {
+        background-position: 250% center;
+    }
+
+}
+
+
+/* ================================
+   PARTÍCULAS
+================================ */
+
+.spark {
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px #ff6fa9,
+        0 0 16px #ff6fa9;
+
+    opacity: 0;
+
+    animation: sparkle 3s infinite;
+
+}
+
+@keyframes sparkle {
+
+    0%,100% {
+
+        opacity: 0;
+
+        transform: scale(.3);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.5);
 
     }
 
 }
 
 
-/* ==============================
+/* ================================
    CORAÇÕES FLUTUANTES
 ================================ */
 
-.floatingHeart {
+.floating {
 
     position: absolute;
 
-    bottom: -50px;
+    bottom: -60px;
 
-    color: #ff5c9b;
+    color: #ff5b9d;
 
     font-size: 25px;
 
-    pointer-events: none;
-
     opacity: 0;
 
-    animation: floating 8s linear infinite;
+    pointer-events: none;
 
     text-shadow:
-        0 0 10px #ff4d91;
+        0 0 10px #ff3f8c,
+        0 0 25px #ff3f8c;
+
+    animation: rise 8s linear infinite;
 
 }
 
-@keyframes floating {
+@keyframes rise {
 
     0% {
 
         transform:
             translateY(0)
-            scale(.6)
+            scale(.5)
             rotate(0deg);
 
         opacity: 0;
@@ -581,9 +869,9 @@ body {
     100% {
 
         transform:
-            translateY(-110vh)
+            translateY(-115vh)
             scale(1.5)
-            rotate(25deg);
+            rotate(35deg);
 
         opacity: 0;
 
@@ -592,41 +880,8 @@ body {
 }
 
 
-/* posições */
-
-.f1 {
-    left: 8%;
-    animation-delay: 0s;
-}
-
-.f2 {
-    left: 20%;
-    animation-delay: 2s;
-}
-
-.f3 {
-    left: 35%;
-    animation-delay: 4s;
-}
-
-.f4 {
-    left: 55%;
-    animation-delay: 1s;
-}
-
-.f5 {
-    left: 70%;
-    animation-delay: 3s;
-}
-
-.f6 {
-    left: 88%;
-    animation-delay: 5s;
-}
-
-
-/* ==============================
-   EXPLOSÃO DE CORAÇÕES
+/* ================================
+   EXPLOSÃO
 ================================ */
 
 .burst {
@@ -636,23 +891,25 @@ body {
     left: 50%;
     top: 43%;
 
+    z-index: 100;
+
     pointer-events: none;
 
     font-size: 25px;
 
-    z-index: 20;
-
-    animation: burst 1.2s forwards;
+    animation:
+        burstAnimation 1.4s ease-out forwards;
 
 }
 
-@keyframes burst {
+@keyframes burstAnimation {
 
     0% {
 
         transform:
             translate(-50%,-50%)
-            scale(.2);
+            scale(.2)
+            rotate(0deg);
 
         opacity: 1;
 
@@ -665,7 +922,8 @@ body {
                 calc(-50% + var(--x)),
                 calc(-50% + var(--y))
             )
-            scale(1.3);
+            scale(1.4)
+            rotate(180deg);
 
         opacity: 0;
 
@@ -674,7 +932,53 @@ body {
 }
 
 
-/* ==============================
+/* ================================
+   ONDA AO TOCAR
+================================ */
+
+.ripple {
+
+    position: absolute;
+
+    left: 50%;
+    top: 43%;
+
+    width: 80px;
+    height: 80px;
+
+    border: 2px solid #ff6ca8;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.3);
+
+    pointer-events: none;
+
+    z-index: 8;
+
+    animation:
+        rippleAnimation 1.2s ease-out forwards;
+
+}
+
+@keyframes rippleAnimation {
+
+    to {
+
+        transform:
+            translate(-50%,-50%)
+            scale(6);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ================================
    CELULAR
 ================================ */
 
@@ -682,47 +986,16 @@ body {
 
     .heartArea {
 
-        width: 290px;
-        height: 290px;
+        width: 92vw;
+        height: 92vw;
 
-    }
-
-    .heart {
-
-        width: 145px;
-        height: 145px;
-
-    }
-
-    .heart::before,
-    .heart::after {
-
-        width: 145px;
-        height: 145px;
-
-    }
-
-    .heart::before {
-
-        top: -77px;
-
-    }
-
-    .heart::after {
-
-        left: 77px;
-
-    }
-
-    .insideText {
-
-        font-size: 24px;
+        top: 42%;
 
     }
 
     .message {
 
-        top: 73%;
+        top: 72%;
 
     }
 
@@ -738,6 +1011,14 @@ body {
 
     }
 
+    .insideText .small {
+
+        font-size: 15px;
+
+        letter-spacing: 3px;
+
+    }
+
 }
 
 </style>
@@ -747,9 +1028,9 @@ body {
 <body>
 
 
-<!-- ==============================
+<!-- ==================================
      LOGIN
-================================ -->
+================================== -->
 
 <div id="loginScreen">
 
@@ -764,7 +1045,7 @@ body {
         </h1>
 
         <p>
-            Só você pode entrar aqui... 💕
+            Só existe uma pessoa que pode entrar aqui... 💕
         </p>
 
 
@@ -789,7 +1070,7 @@ body {
             <input
                 type="password"
                 id="senha"
-                placeholder="Uma palavrinha especial..."
+                placeholder="A senha é especial..."
                 required
             >
 
@@ -808,35 +1089,205 @@ body {
 
 
 
-<!-- ==============================
-     SURPRESA
-================================ -->
+<!-- ==================================
+     TELA DO AMOR
+================================== -->
 
 <div id="loveScreen">
 
-    <div class="glow"></div>
+    <div class="centerGlow"></div>
 
 
-    <!-- corações flutuantes -->
+    <!-- partículas -->
 
-    <div class="floatingHeart f1">♥</div>
-    <div class="floatingHeart f2">♡</div>
-    <div class="floatingHeart f3">♥</div>
-    <div class="floatingHeart f4">♡</div>
-    <div class="floatingHeart f5">♥</div>
-    <div class="floatingHeart f6">♡</div>
+    <div class="spark" style="left:12%;top:20%;animation-delay:.5s"></div>
+    <div class="spark" style="left:25%;top:65%;animation-delay:1.8s"></div>
+    <div class="spark" style="left:75%;top:20%;animation-delay:2.2s"></div>
+    <div class="spark" style="left:88%;top:60%;animation-delay:1s"></div>
+    <div class="spark" style="left:18%;top:45%;animation-delay:2.7s"></div>
+    <div class="spark" style="left:82%;top:42%;animation-delay:1.5s"></div>
 
 
-    <!-- coração -->
+    <!-- corações -->
+
+    <div class="floating" style="left:7%;animation-delay:0s">♥</div>
+    <div class="floating" style="left:18%;animation-delay:2s">♡</div>
+    <div class="floating" style="left:31%;animation-delay:4s">♥</div>
+    <div class="floating" style="left:48%;animation-delay:1s">♡</div>
+    <div class="floating" style="left:65%;animation-delay:3s">♥</div>
+    <div class="floating" style="left:80%;animation-delay:5s">♡</div>
+    <div class="floating" style="left:92%;animation-delay:2.5s">♥</div>
+
+
+    <!-- ==================================
+         CORAÇÃO PRINCIPAL
+    ================================== -->
 
     <div class="heartArea" id="heartArea">
 
-        <div class="heart"></div>
+
+        <svg
+            class="heartSvg"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+
+
+            <defs>
+
+
+                <!-- degradê do contorno -->
+
+                <linearGradient
+                    id="heartGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                >
+
+                    <stop
+                        offset="0%"
+                        stop-color="#ff2f7d"
+                    />
+
+                    <stop
+                        offset="45%"
+                        stop-color="#ff7eb6"
+                    />
+
+                    <stop
+                        offset="75%"
+                        stop-color="#e34cff"
+                    />
+
+                    <stop
+                        offset="100%"
+                        stop-color="#ff2f7d"
+                    />
+
+                </linearGradient>
+
+
+                <!-- degradê interno -->
+
+                <radialGradient
+                    id="fillGradient"
+                    cx="50%"
+                    cy="40%"
+                    r="65%"
+                >
+
+                    <stop
+                        offset="0%"
+                        stop-color="#ff5c9d"
+                    />
+
+                    <stop
+                        offset="60%"
+                        stop-color="#ff246f"
+                    />
+
+                    <stop
+                        offset="100%"
+                        stop-color="#9d1fff"
+                    />
+
+                </radialGradient>
+
+
+                <!-- filtro neon -->
+
+                <filter
+                    id="glow"
+                    x="-100%"
+                    y="-100%"
+                    width="300%"
+                    height="300%"
+                >
+
+                    <feGaussianBlur
+                        stdDeviation="7"
+                        result="blur"
+                    />
+
+                    <feMerge>
+
+                        <feMergeNode
+                            in="blur"
+                        />
+
+                        <feMergeNode
+                            in="SourceGraphic"
+                        />
+
+                    </feMerge>
+
+                </filter>
+
+            </defs>
+
+
+            <!-- preenchimento -->
+
+            <path
+                class="heartFill"
+                d="
+                    M256 455
+                    C235 435 100 330 55 235
+                    C15 150 60 65 145 65
+                    C198 65 230 96 256 135
+                    C282 96 314 65 367 65
+                    C452 65 497 150 457 235
+                    C412 330 277 435 256 455Z
+                "
+            />
+
+
+            <!-- segundo brilho -->
+
+            <path
+                class="heartOutline neonGlow"
+                d="
+                    M256 455
+                    C235 435 100 330 55 235
+                    C15 150 60 65 145 65
+                    C198 65 230 96 256 135
+                    C282 96 314 65 367 65
+                    C452 65 497 150 457 235
+                    C412 330 277 435 256 455Z
+                "
+            />
+
+
+            <!-- linha interna -->
+
+            <path
+                class="heartInner"
+                d="
+                    M256 435
+                    C232 415 120 325 82 240
+                    C50 167 87 94 151 94
+                    C198 94 229 127 256 165
+                    C283 127 314 94 361 94
+                    C425 94 462 167 430 240
+                    C392 325 280 415 256 435Z
+                "
+            />
+
+        </svg>
+
 
         <div class="insideText">
 
-            EU<br>
-            TE AMO ❤️
+            <span class="small">
+                MEU AMOR
+            </span>
+
+            <span class="big">
+                TE<br>
+                AMO ❤️
+            </span>
 
         </div>
 
@@ -848,11 +1299,11 @@ body {
     <div class="message">
 
         <h1>
-            Eu amo você.
+            Você me faz feliz todos os dias.
         </h1>
 
         <p>
-            Você me faz feliz todos os dias. ❤️
+            E eu escolheria você de novo. Sempre. 💕
         </p>
 
     </div>
@@ -864,9 +1315,9 @@ body {
 <script>
 
 
-/* ==============================
+/* ==================================
    LOGIN
-================================ */
+================================== */
 
 const form =
     document.getElementById("loginForm");
@@ -887,27 +1338,36 @@ form.addEventListener("submit", function(event) {
 
 
     const usuario =
-        document.getElementById("usuario").value.trim();
+        document
+        .getElementById("usuario")
+        .value
+        .trim();
 
     const senha =
-        document.getElementById("senha").value;
+        document
+        .getElementById("senha")
+        .value;
 
+
+    /* LOGIN */
 
     if (
         usuario === "Jheneffer" &&
         senha === "teamo"
     ) {
 
-        loginScreen.style.display = "none";
+        loginScreen.style.display =
+            "none";
 
-        loveScreen.style.display = "block";
+        loveScreen.style.display =
+            "block";
 
-        criarCoracoes();
+        iniciarCoracoes();
 
     } else {
 
         erro.textContent =
-            "Hmm... acho que você errou ❤️";
+            "Essa não é a senha, meu amor ❤️";
 
     }
 
@@ -915,35 +1375,54 @@ form.addEventListener("submit", function(event) {
 
 
 
-/* ==============================
+/* ==================================
    CORAÇÕES EXTRAS
-================================ */
+================================== */
 
-function criarCoracoes() {
+function iniciarCoracoes() {
 
-    for (let i = 0; i < 18; i++) {
+    for (
+        let i = 0;
+        i < 16;
+        i++
+    ) {
 
         const heart =
             document.createElement("div");
 
-        heart.className = "floatingHeart";
+        heart.className =
+            "floating";
 
         heart.innerHTML =
-            Math.random() > .5 ? "♥" : "♡";
+            Math.random() > .5
+            ? "♥"
+            : "♡";
+
 
         heart.style.left =
             Math.random() * 100 + "%";
 
+
         heart.style.fontSize =
-            (15 + Math.random() * 30) + "px";
+            14 +
+            Math.random() * 30 +
+            "px";
+
 
         heart.style.animationDuration =
-            (5 + Math.random() * 7) + "s";
+            5 +
+            Math.random() * 8 +
+            "s";
+
 
         heart.style.animationDelay =
-            Math.random() * 6 + "s";
+            Math.random() * 7 +
+            "s";
 
-        loveScreen.appendChild(heart);
+
+        loveScreen.appendChild(
+            heart
+        );
 
     }
 
@@ -951,87 +1430,134 @@ function criarCoracoes() {
 
 
 
-/* ==============================
-   CORAÇÃO INTERATIVO
-================================ */
+/* ==================================
+   INTERAÇÃO COM O CORAÇÃO
+================================== */
 
 const heartArea =
-    document.getElementById("heartArea");
+    document.getElementById(
+        "heartArea"
+    );
 
 
-heartArea.addEventListener("click", function(event) {
-
-    for (let i = 0; i < 16; i++) {
-
-        const heart =
-            document.createElement("div");
-
-        heart.className = "burst";
-
-        heart.innerHTML =
-            Math.random() > .5 ? "❤️" : "💗";
+heartArea.addEventListener(
+    "click",
+    function() {
 
 
-        const angle =
-            Math.random() * Math.PI * 2;
+        /* onda */
 
-        const distance =
-            100 + Math.random() * 180;
+        const ripple =
+            document.createElement(
+                "div"
+            );
 
+        ripple.className =
+            "ripple";
 
-        heart.style.setProperty(
-            "--x",
-            Math.cos(angle) * distance + "px"
+        loveScreen.appendChild(
+            ripple
         );
 
 
-        heart.style.setProperty(
-            "--y",
-            Math.sin(angle) * distance + "px"
+        setTimeout(
+            function() {
+
+                ripple.remove();
+
+            },
+            1200
         );
 
 
-        loveScreen.appendChild(heart);
+        /* explosão */
+
+        for (
+            let i = 0;
+            i < 24;
+            i++
+        ) {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+            heart.className =
+                "burst";
 
 
-        setTimeout(function() {
+            heart.innerHTML =
+                Math.random() > .5
+                ? "❤️"
+                : "💗";
 
-            heart.remove();
 
-        }, 1200);
+            const angle =
+                Math.random()
+                * Math.PI
+                * 2;
+
+
+            const distance =
+                100 +
+                Math.random() * 230;
+
+
+            heart.style.setProperty(
+                "--x",
+                Math.cos(angle)
+                * distance
+                + "px"
+            );
+
+
+            heart.style.setProperty(
+                "--y",
+                Math.sin(angle)
+                * distance
+                + "px"
+            );
+
+
+            loveScreen.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                function() {
+
+                    heart.remove();
+
+                },
+                1400
+            );
+
+        }
 
     }
-
-});
-
-
-
-/* ==============================
-   MOVIMENTO COM O CELULAR / MOUSE
-================================ */
-
-document.addEventListener("mousemove", function(event) {
-
-    if (loveScreen.style.display !== "block")
-        return;
-
-
-    const x =
-        (event.clientX / window.innerWidth - .5) * 12;
-
-    const y =
-        (event.clientY / window.innerHeight - .5) * 12;
-
-
-    heartArea.style.marginLeft = x + "px";
-
-    heartArea.style.marginTop = y + "px";
-
-});
+);
 
 
 </script>
 
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
