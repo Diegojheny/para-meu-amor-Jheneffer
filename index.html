@@ -1,705 +1,957 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Para Meu Amor ❤️</title>
+    <meta charset="UTF-8">
 
-<style>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+          maximum-scale=1.0, user-scalable=no">
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <title>Para o meu amor ❤️</title>
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #050008;
-    font-family: Georgia, "Times New Roman", serif;
-}
+    <style>
 
-/* =========================
-   LOGIN
-========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-#login {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #030207;
+            font-family: Georgia, "Times New Roman", serif;
+        }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        body {
+            color: white;
+        }
 
-    padding: 25px;
 
-    background:
-        radial-gradient(circle at center,
-        rgba(120, 0, 70, 0.35),
-        transparent 55%),
-        linear-gradient(135deg, #050008, #16000f, #050008);
+        /* ==================================================
+           LOGIN
+        ================================================== */
 
-    color: white;
-}
+        #loginScreen {
 
-.login-box {
-    width: min(90vw, 380px);
+            position: fixed;
+            inset: 0;
 
-    padding: 38px 28px;
+            z-index: 9999;
 
-    border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    text-align: center;
+            padding: 25px;
 
-    background: rgba(20, 0, 15, 0.82);
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(160, 0, 70, 0.28),
+                    transparent 48%
+                ),
+                linear-gradient(
+                    145deg,
+                    #020106,
+                    #16040e,
+                    #030207
+                );
 
-    border: 1px solid rgba(255, 80, 150, 0.35);
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
 
-    box-shadow:
-        0 0 40px rgba(255, 0, 120, 0.18),
-        inset 0 0 25px rgba(255, 0, 100, 0.04);
+        #loginScreen.hidden {
 
-    backdrop-filter: blur(12px);
-}
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
 
-.login-heart {
-    font-size: 55px;
-    margin-bottom: 12px;
 
-    animation: heartbeat 1.6s infinite;
-}
+        .login-box {
 
-.login-box h1 {
-    font-size: 27px;
-    margin-bottom: 8px;
+            width: 100%;
+            max-width: 390px;
 
-    color: #fff;
-}
+            padding: 38px 28px;
 
-.login-box p {
-    font-size: 14px;
-    opacity: 0.7;
-    margin-bottom: 25px;
-}
+            text-align: center;
 
-.login-box input {
-    width: 100%;
+            border-radius: 30px;
 
-    padding: 15px 16px;
+            border:
+                1px solid rgba(255, 100, 160, 0.25);
 
-    margin-bottom: 12px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.015)
+                );
 
-    border: 1px solid rgba(255, 100, 170, 0.35);
-    border-radius: 13px;
+            box-shadow:
+                0 0 60px rgba(255, 0, 100, 0.15),
+                inset 0 0 30px rgba(255,255,255,0.02);
 
-    outline: none;
+            backdrop-filter: blur(15px);
+        }
 
-    background: rgba(255,255,255,0.06);
 
-    color: white;
+        .login-heart {
 
-    font-size: 16px;
+            font-size: 65px;
 
-    text-align: center;
-}
+            margin-bottom: 12px;
 
-.login-box input::placeholder {
-    color: rgba(255,255,255,0.45);
-}
+            animation:
+                pulse 1.8s infinite ease-in-out;
 
-.login-box button {
-    width: 100%;
+            filter:
+                drop-shadow(0 0 10px #ff397f)
+                drop-shadow(0 0 25px rgba(255,0,100,0.5));
+        }
 
-    padding: 15px;
 
-    border: none;
-    border-radius: 13px;
+        @keyframes pulse {
 
-    background: linear-gradient(90deg, #ff2f8b, #ff5ca8);
+            0%,100% {
+                transform: scale(1);
+            }
 
-    color: white;
+            50% {
+                transform: scale(1.12);
+            }
+        }
 
-    font-size: 16px;
-    font-weight: bold;
 
-    cursor: pointer;
+        .login-title {
 
-    box-shadow:
-        0 0 20px rgba(255, 40, 130, 0.25);
-}
+            font-size: 30px;
 
-.login-box button:active {
-    transform: scale(0.97);
-}
+            font-weight: normal;
 
-#error {
-    display: none;
+            margin-bottom: 10px;
 
-    margin-top: 15px;
+            text-shadow:
+                0 0 15px rgba(255,70,140,0.7);
+        }
 
-    color: #ff719f;
 
-    font-size: 14px;
-}
+        .login-subtitle {
 
-/* =========================
-   SITE
-========================= */
+            color: #e7b9c9;
 
-#site {
-    display: none;
+            font-size: 15px;
 
-    width: 100%;
-    height: 100%;
+            line-height: 1.6;
 
-    position: relative;
-}
+            margin-bottom: 28px;
+        }
 
-/* =========================
-   ÁREA HORIZONTAL
-========================= */
 
-.pages {
-    width: 100%;
-    height: 100%;
+        .login-box input {
 
-    display: flex;
+            width: 100%;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+            padding: 15px;
 
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
+            margin-bottom: 14px;
 
-    -webkit-overflow-scrolling: touch;
+            border-radius: 14px;
 
-    overscroll-behavior-x: contain;
+            border:
+                1px solid rgba(255,120,170,0.25);
 
-    touch-action: pan-x;
+            outline: none;
 
-    scrollbar-width: none;
-}
+            background:
+                rgba(0,0,0,0.35);
 
-.pages::-webkit-scrollbar {
-    display: none;
-}
+            color: white;
 
-/* =========================
-   CADA TELA
-========================= */
+            text-align: center;
 
-.page {
-    flex: 0 0 100vw;
+            font-size: 16px;
+        }
 
-    width: 100vw;
-    height: 100vh;
 
-    position: relative;
+        .login-box input:focus {
 
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+            border-color:
+                rgba(255,100,160,0.8);
 
-    overflow: hidden;
-}
+            box-shadow:
+                0 0 18px rgba(255,40,110,0.25);
+        }
 
-/* =========================
-   PRIMEIRA TELA
-========================= */
 
-.page-one {
-    display: flex;
+        .login-box input::placeholder {
 
-    align-items: center;
-    justify-content: center;
+            color: #a98b98;
+        }
 
-    background:
-        radial-gradient(circle at center,
-        rgba(130, 0, 70, 0.22),
-        transparent 50%),
-        linear-gradient(145deg,
-        #030005,
-        #13000d,
-        #030005);
-}
 
-/* lugar reservado para a foto */
+        .login-button {
 
-.photo-placeholder {
-    position: absolute;
+            width: 100%;
 
-    width: min(78vw, 430px);
-    height: min(78vw, 430px);
+            padding: 15px;
 
-    border-radius: 50%;
+            border: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            border-radius: 14px;
 
-    text-align: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff397f,
+                    #b91459
+                );
 
-    padding: 35px;
+            color: white;
 
-    color: rgba(255,255,255,0.28);
+            font-size: 16px;
 
-    border: 1px dashed rgba(255, 80, 160, 0.18);
+            font-weight: bold;
 
-    background:
-        radial-gradient(circle,
-        rgba(255, 40, 130, 0.08),
-        transparent 65%);
+            cursor: pointer;
 
-    font-size: 14px;
+            box-shadow:
+                0 8px 25px rgba(255,0,100,0.25);
+        }
 
-    pointer-events: none;
-}
 
-/* =========================
-   CORAÇÃO
-========================= */
+        .login-button:active {
 
-.heart-container {
-    position: relative;
+            transform: scale(0.97);
+        }
 
-    width: min(82vw, 450px);
-    height: min(82vw, 450px);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        .login-error {
 
-    z-index: 5;
+            min-height: 20px;
 
-    animation: heartFloat 4s ease-in-out infinite;
-}
+            margin-top: 13px;
 
-.heart-svg {
-    position: absolute;
+            color: #ff8caf;
 
-    width: 100%;
-    height: 100%;
+            font-size: 13px;
+        }
 
-    overflow: visible;
-}
 
-.heart-path {
-    fill: none;
+        /* ==================================================
+           SITE
+        ================================================== */
 
-    stroke: url(#heartGradient);
+        #site {
 
-    stroke-width: 3.5;
+            width: 100%;
+            height: 100%;
 
-    stroke-linecap: round;
-    stroke-linejoin: round;
+            opacity: 0;
 
-    filter:
-        drop-shadow(0 0 5px rgba(255,30,130,0.8))
-        drop-shadow(0 0 15px rgba(255,30,130,0.5));
+            transition: opacity 1.5s ease;
+        }
 
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
 
-    animation:
-        drawHeart 3.5s ease forwards,
-        heartGlow 2s ease-in-out infinite alternate 3.5s;
-}
+        #site.visible {
 
-.heart-text {
-    position: relative;
+            opacity: 1;
+        }
 
-    z-index: 10;
 
-    width: 65%;
+        /* ==================================================
+           PÁGINAS HORIZONTAIS
+        ================================================== */
 
-    text-align: center;
+        .pages {
 
-    color: white;
+            width: 100%;
+            height: 100%;
 
-    font-size: clamp(18px, 5vw, 28px);
+            display: flex;
 
-    line-height: 1.35;
+            overflow-x: auto;
+            overflow-y: hidden;
 
-    font-weight: bold;
+            scroll-snap-type: x mandatory;
 
-    text-shadow:
-        0 0 8px rgba(255,70,160,0.8),
-        0 0 20px rgba(255,30,130,0.5);
+            scroll-behavior: smooth;
 
-    animation:
-        textAppear 2s ease 2.5s both;
-}
+            -webkit-overflow-scrolling: touch;
 
-.heart-text span {
-    display: inline-block;
+            scrollbar-width: none;
+        }
 
-    margin-left: 7px;
 
-    font-size: 1.3em;
+        .pages::-webkit-scrollbar {
 
-    animation: arrowMove 1.3s ease-in-out infinite;
-}
+            display: none;
+        }
 
-/* =========================
-   INDICAÇÃO DE DESLIZE
-========================= */
 
-.swipe-hint {
-    position: absolute;
+        .page {
 
-    bottom: 30px;
-    left: 50%;
+            position: relative;
 
-    transform: translateX(-50%);
+            flex: 0 0 100%;
 
-    z-index: 20;
+            width: 100%;
+            height: 100%;
 
-    color: rgba(255,255,255,0.65);
+            scroll-snap-align: start;
 
-    font-size: 13px;
+            scroll-snap-stop: always;
 
-    white-space: nowrap;
+            overflow: hidden;
+        }
 
-    animation: hintPulse 2s infinite;
-}
 
-.swipe-arrow {
-    display: inline-block;
+        /* ==================================================
+           PRIMEIRA TELA
+        ================================================== */
 
-    margin-left: 5px;
+        .page-one {
 
-    font-size: 20px;
+            display: flex;
 
-    animation: arrowMove 1.2s infinite;
-}
+            align-items: center;
+            justify-content: center;
 
-/* =========================
-   SEGUNDA TELA
-========================= */
+            text-align: center;
 
-.page-two {
-    overflow-y: auto;
-    overflow-x: hidden;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(170,0,75,0.24),
+                    transparent 48%
+                ),
+                linear-gradient(
+                    160deg,
+                    #020106,
+                    #16030c,
+                    #030207
+                );
+        }
 
-    -webkit-overflow-scrolling: touch;
 
-    touch-action: pan-y;
+        /* ==================================================
+           FOTO DAS ALIANÇAS
+        ================================================== */
 
-    background:
-        radial-gradient(circle at top,
-        rgba(100,0,60,0.25),
-        transparent 45%),
-        linear-gradient(160deg,
-        #080008,
-        #17000f,
-        #050006);
+        .photo-one {
 
-    color: white;
-}
+            position: absolute;
 
-/* área da segunda foto */
+            inset: 0;
 
-.photo-two-placeholder {
-    width: calc(100% - 30px);
+            width: 100%;
+            height: 100%;
 
-    max-width: 700px;
+            object-fit: cover;
 
-    height: 48vh;
+            opacity: 0;
 
-    min-height: 280px;
+            filter:
+                grayscale(1)
+                blur(12px)
+                brightness(0.15);
 
-    margin: 25px auto 30px;
+            transform: scale(1.08);
 
-    border-radius: 25px;
+            transition:
+                opacity 3s ease,
+                filter 3s ease,
+                transform 4s ease;
 
-    border: 1px dashed rgba(255, 80, 160, 0.18);
+            z-index: 1;
+        }
 
-    display: flex;
 
-    align-items: center;
-    justify-content: center;
+        .photo-one.show {
 
-    text-align: center;
+            opacity: 0.55;
 
-    padding: 30px;
+            filter:
+                grayscale(0)
+                blur(0)
+                brightness(0.55);
 
-    color: rgba(255,255,255,0.28);
+            transform: scale(1);
+        }
 
-    background:
-        radial-gradient(circle,
-        rgba(255, 40, 130, 0.08),
-        transparent 65%);
 
-    position: relative;
-}
+        /* ==================================================
+           ESCURECIMENTO DA FOTO
+        ================================================== */
 
-/* =========================
-   TEXTO
-========================= */
+        .dark-overlay {
 
-.love-content {
-    width: min(90%, 720px);
+            position: absolute;
 
-    margin: 0 auto;
+            inset: 0;
 
-    padding-bottom: 80px;
-}
+            z-index: 2;
 
-.love-title {
-    text-align: center;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.70),
+                    rgba(0,0,0,0.20),
+                    rgba(0,0,0,0.78)
+                );
+        }
 
-    font-size: clamp(28px, 8vw, 48px);
 
-    margin-bottom: 35px;
+        /* ==================================================
+           BRILHO
+        ================================================== */
 
-    color: #fff;
+        .glow {
 
-    text-shadow:
-        0 0 10px rgba(255,60,150,0.8),
-        0 0 30px rgba(255,20,120,0.4);
-}
+            position: absolute;
 
-.love-text {
-    font-size: clamp(17px, 4.5vw, 21px);
+            width: 320px;
+            height: 320px;
 
-    line-height: 1.85;
+            border-radius: 50%;
 
-    text-align: left;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,20,100,0.20),
+                    transparent 68%
+                );
 
-    color: rgba(255,255,255,0.92);
-}
+            filter: blur(25px);
 
-.love-text p {
-    margin-bottom: 28px;
-}
+            animation:
+                glow 3s infinite ease-in-out;
 
-.final-love {
-    text-align: center;
+            z-index: 3;
+        }
 
-    font-size: clamp(24px, 6vw, 36px);
 
-    line-height: 1.5;
+        @keyframes glow {
 
-    margin-top: 40px;
+            0%,100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
 
-    color: #fff;
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
 
-    text-shadow:
-        0 0 10px rgba(255,60,150,0.9),
-        0 0 25px rgba(255,30,130,0.5);
-}
 
-/* =========================
-   CORAÇÕES FLUTUANTES
-========================= */
+        /* ==================================================
+           CONTEÚDO PRIMEIRA TELA
+        ================================================== */
 
-.floating-heart {
-    position: fixed;
+        .first-content {
 
-    bottom: -30px;
+            position: relative;
 
-    z-index: 3;
+            z-index: 5;
 
-    color: rgba(255,60,150,0.35);
+            width: 100%;
 
-    pointer-events: none;
+            padding: 25px;
 
-    animation: floatHeart linear infinite;
-}
+            display: flex;
 
-.floating-heart:nth-child(1) {
-    left: 10%;
-    font-size: 18px;
-    animation-duration: 8s;
-}
+            flex-direction: column;
 
-.floating-heart:nth-child(2) {
-    left: 25%;
-    font-size: 12px;
-    animation-duration: 11s;
-    animation-delay: 2s;
-}
+            align-items: center;
+        }
 
-.floating-heart:nth-child(3) {
-    left: 48%;
-    font-size: 22px;
-    animation-duration: 9s;
-    animation-delay: 4s;
-}
 
-.floating-heart:nth-child(4) {
-    left: 72%;
-    font-size: 15px;
-    animation-duration: 12s;
-    animation-delay: 1s;
-}
+        .little-title {
 
-.floating-heart:nth-child(5) {
-    left: 88%;
-    font-size: 20px;
-    animation-duration: 10s;
-    animation-delay: 3s;
-}
+            font-size: 13px;
 
-/* =========================
-   ANIMAÇÕES
-========================= */
+            letter-spacing: 4px;
 
-@keyframes drawHeart {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
+            text-transform: uppercase;
 
-@keyframes heartGlow {
-    from {
-        filter:
-            drop-shadow(0 0 5px rgba(255,30,130,0.7))
-            drop-shadow(0 0 12px rgba(255,30,130,0.4));
-    }
+            color: #f4b8cb;
 
-    to {
-        filter:
-            drop-shadow(0 0 10px rgba(255,80,180,1))
-            drop-shadow(0 0 30px rgba(255,20,140,0.7));
-    }
-}
+            margin-bottom: 18px;
 
-@keyframes textAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.75);
-    }
+            animation:
+                fadeUp 1.5s ease both;
+        }
 
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
-@keyframes heartFloat {
-    0%,100% {
-        transform: translateY(0);
-    }
+        .first-title {
 
-    50% {
-        transform: translateY(-8px);
-    }
-}
+            font-size:
+                clamp(32px, 9vw, 55px);
 
-@keyframes arrowMove {
-    0%,100% {
-        transform: translateX(0);
-    }
+            font-weight: normal;
 
-    50% {
-        transform: translateX(9px);
-    }
-}
+            line-height: 1.12;
 
-@keyframes hintPulse {
-    0%,100% {
-        opacity: 0.35;
-    }
+            text-shadow:
+                0 0 10px rgba(255,255,255,0.4),
+                0 0 30px rgba(255,30,120,0.65);
 
-    50% {
-        opacity: 1;
-    }
-}
+            animation:
+                fadeUp 1.7s 0.2s ease both;
+        }
 
-@keyframes heartbeat {
-    0%,100% {
-        transform: scale(1);
-    }
 
-    15% {
-        transform: scale(1.15);
-    }
+        .first-title span {
 
-    30% {
-        transform: scale(1);
-    }
+            color: #ff75a8;
+        }
 
-    45% {
-        transform: scale(1.12);
-    }
 
-    60% {
-        transform: scale(1);
-    }
-}
+        .love-message {
 
-@keyframes floatHeart {
-    from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
+            max-width: 370px;
 
-    15% {
-        opacity: 0.6;
-    }
+            margin-top: 20px;
 
-    85% {
-        opacity: 0.5;
-    }
+            color: #f8dce7;
 
-    to {
-        transform: translateY(-110vh) rotate(30deg);
-        opacity: 0;
-    }
-}
+            font-size: 17px;
 
-/* =========================
-   CELULARES PEQUENOS
-========================= */
+            line-height: 1.7;
 
-@media (max-width: 380px) {
+            text-shadow:
+                0 2px 8px black;
 
-    .heart-container {
-        width: 86vw;
-        height: 86vw;
-    }
+            animation:
+                fadeUp 1.8s 0.5s ease both;
+        }
 
-    .heart-text {
-        font-size: 17px;
-    }
 
-    .swipe-hint {
-        bottom: 20px;
-    }
+        @keyframes fadeUp {
 
-}
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
 
-/* =========================
-   REDUÇÃO DE MOVIMENTO
-========================= */
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-    }
+        /* ==================================================
+           CORAÇÃO
+        ================================================== */
 
-}
+        .heart-container {
 
-</style>
+            position: relative;
+
+            width:
+                min(75vw, 330px);
+
+            margin-top: 20px;
+
+            animation:
+                heartAppear 2s 0.8s ease both;
+        }
+
+
+        @keyframes heartAppear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        .heart-svg {
+
+            width: 100%;
+
+            overflow: visible;
+
+            filter:
+                drop-shadow(0 0 8px #ff397f)
+                drop-shadow(0 0 22px rgba(255,0,100,0.6));
+        }
+
+
+        .heart-line {
+
+            fill: none;
+
+            stroke: url(#heartGradient);
+
+            stroke-width: 3;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+
+            stroke-dasharray: 1200;
+
+            stroke-dashoffset: 1200;
+
+            animation:
+                drawHeart 3.5s 1s ease forwards;
+        }
+
+
+        @keyframes drawHeart {
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+
+        .heart-text {
+
+            position: absolute;
+
+            left: 50%;
+            top: 53%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 230px;
+
+            color: white;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            text-shadow:
+                0 0 8px #ff397f,
+                0 0 20px rgba(255,0,100,0.8);
+
+            opacity: 0;
+
+            animation:
+                appear 1.5s 3.2s ease forwards;
+        }
+
+
+        @keyframes appear {
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .bottom-love {
+
+            margin-top: 3px;
+
+            color: #ffd3e1;
+
+            font-size: 14px;
+
+            opacity: 0;
+
+            animation:
+                appear 1.5s 4s ease forwards;
+        }
+
+
+        /* ==================================================
+           SWIPE
+        ================================================== */
+
+        .swipe {
+
+            position: absolute;
+
+            bottom: 22px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 10;
+
+            white-space: nowrap;
+
+            color: #edb8c9;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+            animation:
+                swipe 2s infinite ease-in-out;
+        }
+
+
+        @keyframes swipe {
+
+            0%,100% {
+                opacity: 0.45;
+                transform: translateX(-50%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(-43%);
+            }
+        }
+
+
+        /* ==================================================
+           SEGUNDA TELA
+        ================================================== */
+
+        .page-two {
+
+            overflow-y: auto;
+
+            overflow-x: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #080309,
+                    #16040d,
+                    #050207
+                );
+
+            scroll-snap-align: start;
+        }
+
+
+        .second-content {
+
+            width: 100%;
+
+            max-width: 700px;
+
+            margin: auto;
+
+            padding:
+                45px 25px 80px;
+
+            text-align: center;
+        }
+
+
+        /* ==================================================
+           FOTO DO BARCO
+        ================================================== */
+
+        .photo-two {
+
+            width: 100%;
+
+            max-height: 65vh;
+
+            object-fit: cover;
+
+            border-radius: 25px;
+
+            display: block;
+
+            margin: 0 auto 35px;
+
+            opacity: 0;
+
+            filter:
+                grayscale(1)
+                blur(12px)
+                brightness(0.2);
+
+            transform: scale(1.05);
+
+            transition:
+                opacity 3s ease,
+                filter 3s ease,
+                transform 4s ease;
+
+            box-shadow:
+                0 0 45px rgba(255,30,110,0.20);
+        }
+
+
+        .photo-two.show {
+
+            opacity: 1;
+
+            filter:
+                grayscale(0)
+                blur(0)
+                brightness(0.75);
+
+            transform: scale(1);
+        }
+
+
+        .second-title {
+
+            font-size:
+                clamp(32px, 8vw, 60px);
+
+            font-weight: normal;
+
+            line-height: 1.15;
+
+            margin-bottom: 30px;
+
+            color: white;
+
+            text-shadow:
+                0 0 12px rgba(255,255,255,0.35),
+                0 0 30px rgba(255,30,120,0.55);
+        }
+
+
+        .second-title span {
+
+            color: #ff76a9;
+        }
+
+
+        .letter {
+
+            text-align: left;
+
+            color: #f2dce5;
+
+            font-size: 18px;
+
+            line-height: 1.9;
+        }
+
+
+        .letter p {
+
+            margin-bottom: 25px;
+        }
+
+
+        .signature {
+
+            text-align: center;
+
+            margin-top: 45px;
+
+            font-size: 24px;
+
+            color: #ff8ab5;
+
+            text-shadow:
+                0 0 15px rgba(255,50,130,0.6);
+        }
+
+
+        .end-heart {
+
+            text-align: center;
+
+            font-size: 45px;
+
+            margin-top: 25px;
+
+            animation:
+                pulse 1.8s infinite ease-in-out;
+        }
+
+
+        /* ==================================================
+           BOTÃO VOLTAR AO TOPO
+        ================================================== */
+
+        .back-top {
+
+            display: block;
+
+            margin:
+                45px auto 0;
+
+            padding:
+                13px 22px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid rgba(255,120,170,0.35);
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #f4c4d4;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            cursor: pointer;
+        }
+
+
+        /* ==================================================
+           RESPONSIVIDADE
+        ================================================== */
+
+        @media (max-width: 400px) {
+
+            .first-content {
+                padding: 18px;
+            }
+
+            .love-message {
+                font-size: 15px;
+            }
+
+            .heart-container {
+                width: 68vw;
+            }
+
+            .second-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .letter {
+                font-size: 17px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
 
-<div id="login">
+<!-- ======================================================
+     LOGIN
+====================================================== -->
+
+<div id="loginScreen">
 
     <div class="login-box">
 
@@ -707,10 +959,15 @@ body {
             ❤️
         </div>
 
-        <h1>Uma surpresa para você</h1>
+        <h1 class="login-title">
+            Uma surpresa para você
+        </h1>
 
-        <p>
-            Digite seu nome e a senha para entrar.
+        <p class="login-subtitle">
+            Existe um pequeno pedaço do meu coração
+            esperando por você aqui...
+            <br>
+            mas primeiro preciso saber se é você. ❤️
         </p>
 
         <input
@@ -723,16 +980,20 @@ body {
         <input
             type="password"
             id="password"
-            placeholder="Senha"
+            placeholder="Nossa senha"
             autocomplete="off"
         >
 
-        <button onclick="entrar()">
-            Entrar ❤️
+        <button
+            class="login-button"
+            onclick="entrar()"
+        >
+            Entrar na nossa história ❤️
         </button>
 
-        <div id="error">
-            Nome ou senha incorretos 💔
+        <div
+            id="loginError"
+            class="login-error">
         </div>
 
     </div>
@@ -740,183 +1001,406 @@ body {
 </div>
 
 
-<!-- =========================
-     SITE
-========================= -->
 
-<div id="site">
+<!-- ======================================================
+     SITE
+====================================================== -->
+
+<main id="site">
 
     <div class="pages" id="pages">
 
-        <!-- =========================
-             PRIMEIRA TELA
-        ========================= -->
+
+        <!-- ==================================================
+             PRIMEIRA PÁGINA
+        ================================================== -->
 
         <section class="page page-one">
 
-            <div class="photo-placeholder">
-                ❤️<br><br>
-                Aqui ficará a foto das alianças.
-            </div>
 
-            <div class="heart-container">
+            <!--
+                PRIMEIRA FOTO:
+                FOTO DAS ALIANÇAS
 
-                <svg
-                    class="heart-svg"
-                    viewBox="0 0 100 100"
-                    aria-hidden="true"
-                >
+                Coloque o arquivo:
+                aliancas.jpg
 
-                    <defs>
+                na mesma pasta deste index.html.
+            -->
 
-                        <linearGradient
-                            id="heartGradient"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="100%"
-                        >
-
-                            <stop
-                                offset="0%"
-                                stop-color="#ff3b9d"
-                            />
-
-                            <stop
-                                offset="50%"
-                                stop-color="#ff78bd"
-                            />
-
-                            <stop
-                                offset="100%"
-                                stop-color="#ff174f"
-                            />
-
-                        </linearGradient>
-
-                    </defs>
-
-                    <path
-                        class="heart-path"
-                        pathLength="1"
-                        d="
-                        M50 88
-                        C45 82 15 64 10 43
-                        C5 21 20 10 35 13
-                        C44 15 49 21 50 27
-                        C51 21 56 15 65 13
-                        C80 10 95 21 90 43
-                        C85 64 55 82 50 88
-                        Z
-                        "
-                    />
-
-                </svg>
+            <img
+                src="aliancas.jpg"
+                alt="Nossa aliança"
+                class="photo-one"
+                id="photoOne"
+            >
 
 
-                <div class="heart-text">
-                    role para o lado, meu amor
-                    <span>→</span>
+            <div class="dark-overlay"></div>
+
+            <div class="glow"></div>
+
+
+            <div class="first-content">
+
+
+                <div class="little-title">
+                    Para a mulher que mudou minha vida
+                </div>
+
+
+                <h1 class="first-title">
+
+                    Você é o meu
+                    <span>amor.</span>
+
+                </h1>
+
+
+                <p class="love-message">
+
+                    Se existe uma coisa que eu quero que você
+                    nunca esqueça, é o quanto você é especial
+                    para mim.
+
+                    <br><br>
+
+                    Entre milhões de pessoas, entre tantos
+                    caminhos e tantas histórias...
+
+                    <br>
+
+                    <strong>
+                        eu tive a sorte de encontrar você.
+                    </strong>
+
+                </p>
+
+
+                <!-- CORAÇÃO -->
+
+                <div class="heart-container">
+
+                    <svg
+                        class="heart-svg"
+                        viewBox="0 0 300 270"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+
+                        <defs>
+
+                            <linearGradient
+                                id="heartGradient"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="100%"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#ffb0cc"
+                                />
+
+                                <stop
+                                    offset="45%"
+                                    stop-color="#ff397f"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#b9004e"
+                                />
+
+                            </linearGradient>
+
+                        </defs>
+
+
+                        <path
+                            class="heart-line"
+                            d="
+                            M150 250
+                            C135 235 35 175 35 90
+                            C35 35 100 15 150 70
+                            C200 15 265 35 265 90
+                            C265 175 165 235 150 250
+                            Z
+                            "
+                        />
+
+                    </svg>
+
+
+                    <div class="heart-text">
+
+                        <strong>
+                            Role para o lado,
+                            meu amor →
+                        </strong>
+
+                        <br><br>
+
+                        Ainda tem uma parte
+                        da nossa história esperando
+                        por você. ❤️
+
+                    </div>
+
+                </div>
+
+
+                <div class="bottom-love">
+
+                    Você é uma das partes mais bonitas
+                    da minha vida. ❤️
+
                 </div>
 
             </div>
 
 
-            <div class="swipe-hint">
-                Deslize para a direita
-                <span class="swipe-arrow">→</span>
+            <div class="swipe">
+
+                ← Deslize para continuar →
+
             </div>
+
 
         </section>
 
 
-        <!-- =========================
-             SEGUNDA TELA
-        ========================= -->
+
+        <!-- ==================================================
+             SEGUNDA PÁGINA
+        ================================================== -->
 
         <section class="page page-two">
 
-            <div class="photo-two-placeholder">
-                ❤️<br><br>
-                Aqui ficará a nossa foto no barco.
-            </div>
+
+            <div class="second-content">
 
 
-            <div class="love-content">
+                <!--
+                    SEGUNDA FOTO:
+                    FOTO DE VOCÊS NO BARCO
 
-                <div class="love-title">
-                    Para Jheneffer ❤️
-                </div>
+                    Coloque o arquivo:
+                    barco.jpg
+
+                    na mesma pasta deste index.html.
+                -->
+
+                <img
+                    src="barco.jpg"
+                    alt="Nós dois juntos"
+                    class="photo-two"
+                    id="photoTwo"
+                >
 
 
-                <div class="love-text">
+                <h2 class="second-title">
+
+                    A minha escolha
+                    <span>é você.</span>
+
+                </h2>
+
+
+                <div class="letter">
+
 
                     <p>
-                        Às vezes eu paro para pensar em como tive sorte de encontrar você e, sinceramente, parece até difícil colocar em palavras tudo o que você significa para mim.
+                        <strong>
+                            Para Jheneffer ❤️
+                        </strong>
                     </p>
 
-                    <p>
-                        Você me apresentou o maior amor que alguém poderia conhecer. Um amor que mudou a forma como eu enxergo a vida, os dias e até o futuro. Depois que você entrou na minha vida, tudo ficou diferente. Os dias ficaram mais bonitos, os momentos ganharam mais significado e a vida, de alguma forma, ficou melhor simplesmente porque você está nela.
-                    </p>
 
                     <p>
-                        Eu sei que não sou perfeito. Eu já errei com você, já tive atitudes que poderia ter feito diferente e sei que, em alguns momentos, talvez tenha te machucado. Mas também sei que, em meio aos meus erros, eu tentei acertar, tentei aprender e, acima de tudo, tentei cuidar do amor que existe entre nós. Porque você é importante demais para mim para que eu simplesmente não me importe.
+
+                        Às vezes eu paro para pensar em como
+                        tive sorte de encontrar você e,
+                        sinceramente, parece até difícil colocar
+                        em palavras tudo o que você significa
+                        para mim.
+
                     </p>
 
-                    <p>
-                        Eu nunca tiro você da minha cabeça. Você está nos meus pensamentos quando acordo, durante o meu dia, nas coisas que vejo, nas músicas que escuto e até nos pequenos momentos em que, do nada, me pego sorrindo porque lembrei de você.
-                    </p>
 
                     <p>
-                        Eu amo você de uma forma que nunca amei ninguém. E não digo isso apenas pela intensidade do que sinto, mas porque com você eu descobri um tipo de amor que eu nem sabia que poderia existir para mim.
+
+                        Você me apresentou o maior amor que
+                        alguém poderia conhecer. Um amor que
+                        mudou a forma como eu enxergo a vida,
+                        os dias e até o futuro.
+
+                        Depois que você entrou na minha vida,
+                        tudo ficou diferente.
+
+                        Os dias ficaram mais bonitos,
+                        os momentos ganharam mais significado
+                        e a vida, de alguma forma, ficou melhor
+                        simplesmente porque você está nela.
+
                     </p>
 
-                    <p>
-                        Tenho uma sorte imensa por ter você na minha vida, Jheneffer. Sorte por poder te amar, por poder compartilhar momentos com você, por conhecer seu jeito, suas manias, seus detalhes e por poder construir uma história ao seu lado.
-                    </p>
 
                     <p>
-                        E se eu pudesse escolher novamente, entre todas as pessoas, todos os caminhos e todas as possibilidades, eu ainda escolheria você.
+
+                        Eu sei que não sou perfeito.
+
+                        Eu já errei com você, já tive atitudes
+                        que poderia ter feito diferente e sei
+                        que, em alguns momentos, talvez tenha
+                        te machucado.
+
+                        Mas também sei que, em meio aos meus
+                        erros, eu tentei acertar, tentei aprender
+                        e, acima de tudo, tentei cuidar do amor
+                        que existe entre nós.
+
+                        Porque você é importante demais para mim
+                        para que eu simplesmente não me importe.
+
                     </p>
 
-                    <p>
-                        Porque é com você que eu quero viver os dias bons, enfrentar os dias difíceis, aprender com os nossos erros, comemorar os nossos acertos e continuar construindo algo que seja nosso.
-                    </p>
 
                     <p>
+
+                        Eu nunca tiro você da minha cabeça.
+
+                        Você está nos meus pensamentos quando
+                        acordo, durante o meu dia, nas coisas
+                        que vejo, nas músicas que escuto e até
+                        nos pequenos momentos em que, do nada,
+                        me pego sorrindo porque lembrei de você.
+
+                    </p>
+
+
+                    <p>
+
+                        Eu amo você de uma forma que nunca
+                        amei ninguém.
+
+                        E não digo isso apenas pela intensidade
+                        do que sinto, mas porque com você eu
+                        descobri um tipo de amor que eu nem
+                        sabia que poderia existir para mim.
+
+                    </p>
+
+
+                    <p>
+
+                        Tenho uma sorte imensa por ter você
+                        na minha vida, Jheneffer.
+
+                        Sorte por poder te amar, por poder
+                        compartilhar momentos com você,
+                        por conhecer seu jeito, suas manias,
+                        seus detalhes e por poder construir
+                        uma história ao seu lado.
+
+                    </p>
+
+
+                    <p>
+
+                        E se eu pudesse escolher novamente,
+                        entre todas as pessoas, todos os
+                        caminhos e todas as possibilidades,
+                        eu ainda escolheria você.
+
+                    </p>
+
+
+                    <p>
+
+                        Porque é com você que eu quero viver
+                        os dias bons, enfrentar os dias
+                        difíceis, aprender com os nossos erros,
+                        comemorar os nossos acertos e continuar
+                        construindo algo que seja nosso.
+
+                    </p>
+
+
+                    <p>
+
                         Você não é apenas alguém que eu amo.
+
+                        <br><br>
+
+                        <strong>
+                            Você é alguém que mudou a minha vida.
+                        </strong>
+
                     </p>
 
-                    <p>
-                        Você é alguém que mudou a minha vida.
-                    </p>
 
                     <p>
-                        E talvez essa seja a forma mais bonita de explicar o que você significa para mim: a minha vida é diferente porque você existe nela, e é muito melhor porque é ao seu lado que eu quero vivê-la💗.
+
+                        E talvez essa seja a forma mais bonita
+                        de explicar o que você significa para mim:
+
+                        a minha vida é diferente porque você
+                        existe nela, e é muito melhor porque é
+                        ao seu lado que eu quero vivê-la 💗.
+
                     </p>
+
+
+                    <p>
+
+                        Eu te amo, Jheneffer.
+
+                        <br><br>
+
+                        Mais do que eu consigo explicar
+                        em palavras.
+
+                        <br>
+
+                        Mais do que eu já amei alguém.
+
+                        <br>
+
+                        E espero poder continuar te mostrando,
+                        todos os dias, o tamanho desse amor. ❤️
+
+                    </p>
+
 
                 </div>
 
 
-                <div class="final-love">
+                <div class="signature">
 
-                    Eu te amo, Jheneffer. ❤️
-
-                    <br><br>
-
-                    Mais do que eu consigo explicar em palavras.
-
+                    Com todo o meu amor,
                     <br>
-
-                    Mais do que eu já amei alguém.
-
-                    <br><br>
-
-                    E espero poder continuar te mostrando,
-                    todos os dias,
-                    o tamanho desse amor. ❤️
+                    para sempre. ❤️
 
                 </div>
+
+
+                <div class="end-heart">
+
+                    ❤️
+
+                </div>
+
+
+                <button
+                    class="back-top"
+                    onclick="voltarInicio()"
+                >
+
+                    Voltar para o começo ❤️
+
+                </button>
+
 
             </div>
 
@@ -924,144 +1408,307 @@ body {
 
     </div>
 
+</main>
 
-    <!-- CORAÇÕES FLUTUANTES -->
-
-    <div class="floating-heart">♥</div>
-    <div class="floating-heart">♥</div>
-    <div class="floating-heart">♥</div>
-    <div class="floating-heart">♥</div>
-    <div class="floating-heart">♥</div>
-
-</div>
 
 
 <script>
 
-/* =========================
-   LOGIN
-========================= */
 
-function entrar() {
+    /* =====================================================
+       LOGIN
+    ===================================================== */
 
-    const usuario =
-        document.getElementById("username").value.trim();
+    function entrar() {
 
-    const senha =
-        document.getElementById("password").value;
 
-    const erro =
-        document.getElementById("error");
+        const usuario =
+            document.getElementById("username")
+            .value
+            .trim();
 
-    if (
-        usuario === "Jheneffer" &&
-        senha === "teamo"
-    ) {
 
-        document.getElementById("login").style.display = "none";
+        const senha =
+            document.getElementById("password")
+            .value;
 
-        document.getElementById("site").style.display = "block";
 
-    } else {
+        const erro =
+            document.getElementById("loginError");
 
-        erro.style.display = "block";
+
+        /*
+            LOGIN:
+
+            Usuário:
+            Jheneffer
+
+            Senha:
+            teamo
+        */
+
+
+        if (
+            usuario === "Jheneffer" &&
+            senha === "teamo"
+        ) {
+
+
+            document
+                .getElementById("loginScreen")
+                .classList
+                .add("hidden");
+
+
+            document
+                .getElementById("site")
+                .classList
+                .add("visible");
+
+
+            setTimeout(() => {
+
+                document
+                    .getElementById("photoOne")
+                    .classList
+                    .add("show");
+
+            }, 500);
+
+
+        } else {
+
+
+            erro.textContent =
+                "Hmm... acho que essa não é a nossa senha. ❤️";
+
+
+            document
+                .getElementById("password")
+                .value = "";
+
+        }
 
     }
 
-}
 
 
-/* =========================
-   ENTER NO LOGIN
-========================= */
+    /* =====================================================
+       ENTER NO TECLADO
+    ===================================================== */
 
-document
-    .getElementById("password")
-    .addEventListener("keydown", function(event) {
+    document
+        .getElementById("password")
+        .addEventListener(
+            "keydown",
+            function(event) {
 
-        if (event.key === "Enter") {
-            entrar();
+                if (event.key === "Enter") {
+
+                    entrar();
+
+                }
+
+            }
+        );
+
+
+
+    /* =====================================================
+       SWIPE ENTRE AS DUAS TELAS
+    ===================================================== */
+
+    const pages =
+        document.getElementById("pages");
+
+
+    let startX = 0;
+    let startY = 0;
+
+
+    pages.addEventListener(
+        "touchstart",
+        function(event) {
+
+            const touch =
+                event.touches[0];
+
+            startX =
+                touch.clientX;
+
+            startY =
+                touch.clientY;
+
+        },
+        {
+            passive: true
         }
-
-    });
-
-
-/* =========================
-   GARANTIR DESLIZE PARA A DIREITA
-========================= */
-
-const pages =
-    document.getElementById("pages");
-
-let startX = 0;
-let startY = 0;
-
-pages.addEventListener(
-    "touchstart",
-    function(event) {
-
-        const touch = event.touches[0];
-
-        startX = touch.clientX;
-        startY = touch.clientY;
-
-    },
-    { passive: true }
-);
+    );
 
 
-pages.addEventListener(
-    "touchend",
-    function(event) {
+    pages.addEventListener(
+        "touchend",
+        function(event) {
 
-        const touch = event.changedTouches[0];
+            const touch =
+                event.changedTouches[0];
 
-        const endX = touch.clientX;
-        const endY = touch.clientY;
+            const endX =
+                touch.clientX;
 
-        const differenceX = endX - startX;
-        const differenceY = endY - startY;
+            const endY =
+                touch.clientY;
 
-        /* 
-           Só considera gesto horizontal
-           quando o movimento para os lados
-           for maior que o movimento vertical.
-        */
 
-        if (
-            Math.abs(differenceX) > 50 &&
-            Math.abs(differenceX) > Math.abs(differenceY)
-        ) {
+            const differenceX =
+                endX - startX;
 
-            if (differenceX < 0) {
+            const differenceY =
+                endY - startY;
 
-                pages.scrollTo({
-                    left: window.innerWidth,
-                    behavior: "smooth"
-                });
 
-            } else {
+            /*
+                Só considera swipe horizontal
+                se o movimento lateral for maior
+                que o vertical.
+            */
 
-                pages.scrollTo({
-                    left: 0,
-                    behavior: "smooth"
-                });
+            if (
+                Math.abs(differenceX) > 50 &&
+                Math.abs(differenceX) >
+                Math.abs(differenceY)
+            ) {
+
+
+                if (differenceX < 0) {
+
+                    pages.scrollTo({
+
+                        left:
+                            window.innerWidth,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                } else {
+
+                    pages.scrollTo({
+
+                        left: 0,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                }
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =====================================================
+       REVELAR FOTO DO BARCO
+    ===================================================== */
+
+    const pageTwo =
+        document.querySelector(".page-two");
+
+
+    const photoTwo =
+        document.getElementById("photoTwo");
+
+
+    pageTwo.addEventListener(
+        "scroll",
+        function() {
+
+            if (
+                pageTwo.scrollTop > 20
+            ) {
+
+                photoTwo
+                    .classList
+                    .add("show");
 
             }
 
         }
+    );
 
-    },
-    { passive: true }
-);
+
+
+    /*
+        Também revela a foto quando
+        a segunda página aparece.
+    */
+
+    let observador =
+        new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(
+                    function(entry) {
+
+                        if (entry.isIntersecting) {
+
+                            photoTwo
+                                .classList
+                                .add("show");
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.2
+            }
+        );
+
+
+    observador.observe(pageTwo);
+
+
+
+    /* =====================================================
+       VOLTAR AO COMEÇO
+    ===================================================== */
+
+    function voltarInicio() {
+
+        pageTwo.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+
+        pages.scrollTo({
+
+            left: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
 
 </script>
 
+
 </body>
+
 </html>
-
-
-
-
-
-
