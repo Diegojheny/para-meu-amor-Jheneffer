@@ -1,0 +1,298 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Uma surpresa para você ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #ffe6ef, #fff5f8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #7a1642;
+        }
+
+        /* =========================
+           TELA DE LOGIN
+           ========================= */
+
+        .login-screen {
+            width: 90%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(150, 30, 75, 0.15);
+        }
+
+        .login-heart {
+            font-size: 65px;
+            margin-bottom: 10px;
+        }
+
+        .login-screen h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .login-screen p {
+            color: #9a6177;
+            margin-bottom: 25px;
+        }
+
+        .login-screen label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            margin: 15px 0 7px;
+        }
+
+        .login-screen input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #f0bfd0;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .login-screen input:focus {
+            border-color: #ff4f87;
+        }
+
+        .login-screen button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 12px;
+            background: #ff4f87;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-screen button:hover {
+            background: #e93d73;
+        }
+
+        #erro {
+            color: #c62857;
+            min-height: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           TELA PRINCIPAL
+           ========================= */
+
+        .love-screen {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle,
+                #fff7fa 0%,
+                #ffeaf1 45%,
+                #ffd8e5 100%);
+        }
+
+        .love-screen.active {
+            display: flex;
+        }
+
+        .heart-container {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        /* Coração */
+
+        .heart {
+            width: 190px;
+            height: 190px;
+            position: absolute;
+            transform: rotate(-45deg);
+            border-left: 8px solid #ff4f87;
+            border-bottom: 8px solid #ff4f87;
+            animation: pulsar 1.2s infinite;
+            filter: drop-shadow(0 5px 15px rgba(255, 79, 135, 0.35));
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            border: 8px solid #ff4f87;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -100px;
+            left: -8px;
+            border-bottom: none;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 100px;
+            border-left: none;
+        }
+
+        @keyframes pulsar {
+
+            0% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            15% {
+                transform: rotate(-45deg) scale(1.12);
+            }
+
+            30% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            45% {
+                transform: rotate(-45deg) scale(1.08);
+            }
+
+            60% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+
+        .heart-text {
+            position: relative;
+            z-index: 2;
+            font-size: 38px;
+            font-weight: 900;
+            color: #8f1747;
+            line-height: 1.1;
+        }
+
+        .love-message {
+            font-size: clamp(30px, 6vw, 55px);
+            max-width: 900px;
+            padding: 0 25px;
+            margin: 0;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #8f1747;
+        }
+
+        .small-message {
+            font-size: 20px;
+            color: #a15370;
+            margin-top: 20px;
+        }
+
+        /* =========================
+           CORAÇÕES FLUTUANDO
+           ========================= */
+
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            color: #ff6f9d;
+            font-size: 25px;
+            animation: subir 6s linear infinite;
+            opacity: 0;
+        }
+
+        .heart1 {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .heart2 {
+            left: 25%;
+            animation-delay: 2s;
+        }
+
+        .heart3 {
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .heart4 {
+            left: 85%;
+            animation-delay: 3s;
+        }
+
+        @keyframes subir {
+
+            0% {
+                transform: translateY(0) scale(0.7);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* Celular */
+
+        @media (max-width: 600px) {
+
+            .heart-container {
+                width: 290px;
+                height: 290px;
+            }
+
+            .heart {
+                width: 150px;
+                height: 150px;
+            }
+
+            .heart::before,
+            .heart::after {
+                width: 150px;
+                height: 150px;
+            }
+
+            .heart::before {
+                top: -80px;
+            }
+
+            .heart::after {
+                left: 80px;
+```
